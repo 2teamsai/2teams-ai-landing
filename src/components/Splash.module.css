@@ -1,0 +1,106 @@
+.splash {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 24px 32px;
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.logoBlock {
+  position: absolute;
+  left: 50%;
+  top: 94%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.1s ease;
+}
+
+.eyebrow {
+  margin-top: 8px;
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  text-align: center;
+  opacity: 0;
+  transition: opacity 1.1s ease;
+}
+
+.enterCta {
+  margin-top: 18px;
+  padding: 10px 30px;
+  border-radius: 999px;
+  font-family: var(--font-mono), monospace;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: linear-gradient(90deg, var(--blue), var(--violet));
+  opacity: 0;
+  transition: opacity 1.1s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.enterCta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(76, 111, 255, 0.35);
+}
+
+.logoBlock.loaded,
+.eyebrow.loaded,
+.enterCta.loaded,
+.brainTag.loaded {
+  opacity: 1;
+}
+
+.brainTag {
+  position: absolute;
+  top: 46%;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  opacity: 0;
+  transition: opacity 1.1s ease;
+  pointer-events: none;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.tagLeft {
+  left: 4%;
+}
+
+.tagRight {
+  right: 4%;
+}
+
+@media (max-width: 860px) {
+  .brainTag {
+    display: none;
+  }
+}

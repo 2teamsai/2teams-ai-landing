@@ -1,0 +1,89 @@
+.teams {
+  padding: 120px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.column {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 36px;
+  border-top: 3px solid transparent;
+}
+
+.ai {
+  border-top-color: var(--violet);
+}
+
+.growth {
+  border-top-color: var(--orange);
+}
+
+.columnTitle {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--ink);
+}
+
+.ai .columnTitle {
+  color: var(--violet-2);
+}
+
+.growth .columnTitle {
+  color: var(--orange-2);
+}
+
+.columnBody {
+  font-family: var(--font-body), sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-muted);
+  margin-top: 10px;
+}
+
+.list {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.list li {
+  font-family: var(--font-body), sans-serif;
+  font-size: 14px;
+  color: var(--ink);
+  padding-left: 18px;
+  position: relative;
+}
+
+.list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ink-faint);
+}
+
+.ai .list li::before {
+  background: var(--violet-2);
+}
+
+.growth .list li::before {
+  background: var(--orange-2);
+}
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

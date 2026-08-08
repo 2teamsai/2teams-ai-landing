@@ -1,0 +1,37 @@
+.wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  line-height: 1.05;
+  white-space: nowrap;
+}
+
+.blue {
+  color: var(--blue);
+}
+
+.violet {
+  color: var(--violet);
+}
+
+.orange {
+  color: var(--orange);
+  font-size: 0.88em;
+}
+
+.hero {
+  font-size: clamp(28px, 5vw, 50px);
+}
+
+.heroCompact {
+  font-size: clamp(36px, 7vw, 72px);
+}
+
+.nav {
+  font-size: 22px;
+}
+
+.footer {
+  font-size: 20px;
+}

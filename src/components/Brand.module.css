@@ -1,0 +1,12 @@
+.brand {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.mark {
+  display: block;
+  width: auto;
+  height: auto;
+}

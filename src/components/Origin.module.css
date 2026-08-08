@@ -1,0 +1,14 @@
+.origin {
+  padding: 120px 0;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-elev);
+}
+
+.body {
+  font-family: var(--font-body), sans-serif;
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--ink-muted);
+  max-width: 720px;
+  margin-top: 24px;
+}

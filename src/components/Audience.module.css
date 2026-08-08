@@ -1,0 +1,21 @@
+.audience {
+  padding: 120px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.chip {
+  font-family: var(--font-mono), monospace;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  color: var(--ink);
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 10px 20px;
+}
