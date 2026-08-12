@@ -12,6 +12,7 @@ export default function Problem() {
         <span className="kicker">{t.problem.kicker}</span>
         <h2 className="sectionTitle">{t.problem.h2}</h2>
         <p className={styles.body}>{t.problem.p}</p>
+        <p className={styles.detail}>{t.problem.detail}</p>
       </div>
     </section>
   );

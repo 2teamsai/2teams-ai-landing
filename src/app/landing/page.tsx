@@ -2,6 +2,7 @@ import Nav from "@/components/Nav";
 import NodeField from "@/components/NodeField";
 import Problem from "@/components/Problem";
 import Pillars from "@/components/Pillars";
+import Differentiators from "@/components/Differentiators";
 import Teams from "@/components/Teams";
 import Audience from "@/components/Audience";
 import Process from "@/components/Process";
@@ -18,6 +19,7 @@ export default function LandingPage() {
       <main id="top">
         <Problem />
         <Pillars />
+        <Differentiators />
         <Teams />
         <Audience />
         <Process />

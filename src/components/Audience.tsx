@@ -15,12 +15,30 @@ export default function Audience() {
           <p className="sectionLead">{t.audience.p}</p>
         </div>
 
-        <div className={styles.chips}>
-          {t.audience.industries.map((industry) => (
-            <span key={industry} className={styles.chip}>
-              {industry}
-            </span>
-          ))}
+        <div className={styles.grid}>
+          <div className={styles.column}>
+            <h3 className={styles.columnTitle}>{t.audience.businessLabel}</h3>
+            <p className={styles.columnLead}>{t.audience.businessLead}</p>
+            <div className={styles.chips}>
+              {t.audience.industries.map((industry) => (
+                <span key={industry} className={styles.chip}>
+                  {industry}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className={styles.column}>
+            <h3 className={styles.columnTitle}>{t.audience.peopleLabel}</h3>
+            <p className={styles.columnLead}>{t.audience.peopleLead}</p>
+            <div className={styles.chips}>
+              {t.audience.peopleTopics.map((topic) => (
+                <span key={topic} className={styles.chip}>
+                  {topic}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

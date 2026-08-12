@@ -1,0 +1,56 @@
+.differentiators {
+  padding: 120px 0;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-elev);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.statement {
+  margin-top: 20px;
+  max-width: 760px;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: clamp(22px, 3vw, 32px);
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+.points {
+  margin-top: 48px;
+  width: 100%;
+  max-width: 720px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 32px;
+}
+
+.point {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink-muted);
+}
+
+.mark {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--orange-2);
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .points {
+    grid-template-columns: 1fr;
+  }
+}

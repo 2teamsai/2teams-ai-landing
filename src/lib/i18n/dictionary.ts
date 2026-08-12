@@ -21,11 +21,17 @@ export interface Copy {
     kicker: string;
     h2: string;
     p: string;
+    detail: string;
   };
   pillars: {
     kicker: string;
     h2: string;
     items: { h: string; p: string }[];
+  };
+  differentiators: {
+    kicker: string;
+    statement: string;
+    points: string[];
   };
   teams: {
     kicker: string;
@@ -38,7 +44,12 @@ export interface Copy {
     kicker: string;
     h2: string;
     p: string;
+    businessLabel: string;
+    businessLead: string;
     industries: string[];
+    peopleLabel: string;
+    peopleLead: string;
+    peopleTopics: string[];
   };
   process: {
     kicker: string;
@@ -87,26 +98,42 @@ export const dictionary: Record<Lang, Copy> = {
       tag2: "Equipo Growth",
     },
     problem: {
-      kicker: "El costo de no responder a tiempo",
-      h2: "Cada consulta sin responder es una venta que se enfría.",
-      p: "Muchas empresas pierden una parte importante de sus ingresos por clientes potenciales no atendidos, seguimientos tardíos y tareas manuales repetitivas. Nosotros creamos sistemas de IA autónomos y a medida que responden, gestionan llamadas y optimizan flujos de trabajo las 24 horas, para que tu negocio crezca sin aumentar tus costos operativos.",
+      kicker: "Automatización inteligente",
+      h2: "Software con IA integrada, no funciones agregadas.",
+      p: "No sumamos una función de IA a tu sistema actual: rediseñamos tu operación con IA en el centro, para resolver problemas estratégicos — no para agregar features. Trabajamos con empresas que quieren automatizar procesos y reducir carga operativa, y con personas que quieren aprender a usar la IA en su día a día.",
+      detail: "Muchas empresas pierden una parte importante de sus ingresos por clientes potenciales no atendidos, seguimientos tardíos y tareas manuales repetitivas. Construimos sistemas con IA integrada que responden, gestionan llamadas y optimizan flujos de trabajo las 24 horas, para que tu negocio crezca sin aumentar tus costos operativos.",
     },
     pillars: {
       kicker: "Qué hacemos",
-      h2: "Tres frentes, un solo sistema.",
+      h2: "Cuatro frentes, un solo sistema.",
       items: [
         {
           h: "Velocidad de respuesta",
-          p: "De horas a segundos: agentes multicanal en WhatsApp, llamadas y chat web que capturan y califican leads en tiempo real.",
+          p: "De horas a segundos: agentes con IA integrada en WhatsApp, llamadas y chat web que capturan y califican leads en tiempo real — sin sumar personal al equipo.",
         },
         {
-          h: "Software a medida",
-          p: "Automatización diseñada en función de tus procesos actuales, sin plantillas rígidas ni programas genéricos.",
+          h: "Software con IA integrada",
+          p: "No agregamos una función de IA a tu sistema: lo rediseñamos con IA en el centro, para automatizar el proceso completo — no una tarea suelta.",
         },
         {
           h: "Escala sin overhead",
-          p: "Procesá hasta 10 veces más consultas sin necesidad de contratar más personal de forma inmediata.",
+          p: "Procesá hasta 10 veces más consultas con el mismo equipo — ahorrás el costo de contratar, capacitar y coordinar personal nuevo.",
         },
+        {
+          h: "Educación en IA para personas",
+          p: "Asesoramiento y educación en IA — aprendé a integrar modelos como Gemini, ChatGPT y Claude en tu vida cotidiana: finanzas, email, agenda, productividad.",
+        },
+      ],
+    },
+    differentiators: {
+      kicker: "Nuestro diferencial",
+      statement:
+        "No somos ingenieros en sistemas ni competimos con programadores. Somos especialistas en Inteligencia Artificial que resuelven los problemas más grandes de tu empresa — personal, costo, ineficiencia. Cada solución que construimos tiene IA integrada en su core, no como un feature agregado.",
+      points: [
+        "No competimos con programadores",
+        "La IA no es un agregado",
+        "Resolvemos problemas grandes, no features",
+        "Automatización de verdad, no simulación",
       ],
     },
     teams: {
@@ -115,7 +142,7 @@ export const dictionary: Record<Lang, Copy> = {
       p: "No coordinás dos proveedores. Un equipo diseña la inteligencia, el otro la pone frente a tus clientes — y responden por el mismo resultado.",
       ai: {
         h3: "Ingeniería de IA",
-        p: "Agentes y automatizaciones a medida, integrados con lo que ya usás.",
+        p: "Agentes y automatizaciones con IA integrada, conectados con lo que ya usás.",
         items: [
           "Chatbots multicanal — WhatsApp, web, voz",
           "Automatización de flujos con n8n",
@@ -136,15 +163,25 @@ export const dictionary: Record<Lang, Copy> = {
     },
     audience: {
       kicker: "A quién ayudamos",
-      h2: "Pensado para negocios con flujo constante de consultas.",
-      p: "Trabajamos con pequeñas y medianas empresas que reciben consultas de forma constante y sienten que están perdiendo ventas por lentitud en el seguimiento o procesos manuales duplicados.",
+      h2: "Trabajamos con empresas y con personas.",
+      p: "Trabajamos en cualquier industria. Lo que importa es que el problema sea estratégico y la solución requiera IA integrada — no una función suelta.",
+      businessLabel: "Para empresas",
+      businessLead:
+        "Pensado para negocios con flujo constante de consultas que sienten que están perdiendo ventas por lentitud en el seguimiento o procesos manuales duplicados.",
       industries: [
         "Servicios profesionales",
         "Inmobiliarias",
         "Construcción y remodelación",
         "E-commerce",
         "Clínicas y servicios de salud",
+        "Logística y distribución",
+        "Finanzas y seguros",
+        "Retail",
       ],
+      peopleLabel: "Para personas",
+      peopleLead:
+        "Asesoramiento y educación en IA para quienes quieren aprender a integrarla en su vida cotidiana — sin volverse técnicos, solo más eficientes.",
+      peopleTopics: ["Finanzas personales", "Email y comunicación", "Agenda y productividad", "Aprendizaje continuo"],
     },
     process: {
       kicker: "Cómo empezamos",
@@ -217,26 +254,43 @@ export const dictionary: Record<Lang, Copy> = {
       tag2: "Growth Team",
     },
     problem: {
-      kicker: "The cost of not responding in time",
-      h2: "Every unanswered inquiry is a sale going cold.",
-      p: "Many businesses lose a significant share of their revenue to unattended leads, late follow-ups, and repetitive manual tasks. We build autonomous, custom AI systems that respond, handle calls, and optimize workflows around the clock — so your business grows without growing your operating costs.",
+      kicker: "Intelligent automation",
+      h2: "Software with AI built in, not features bolted on.",
+      p: "We don't add an AI feature to your existing system: we redesign your operation with AI at the core, to solve strategic problems — not to ship features. We work with businesses that want to automate processes and cut operational overhead, and with people who want to learn to use AI in their everyday life.",
+      detail:
+        "Many businesses lose a significant share of their revenue to unattended leads, late follow-ups, and repetitive manual tasks. We build systems with AI built in that respond, handle calls, and optimize workflows around the clock — so your business grows without growing your operating costs.",
     },
     pillars: {
       kicker: "What we do",
-      h2: "Three fronts, one system.",
+      h2: "Four fronts, one system.",
       items: [
         {
           h: "Response speed",
-          p: "From hours to seconds: multichannel agents on WhatsApp, calls, and web chat that capture and qualify leads in real time.",
+          p: "From hours to seconds: agents with AI built in on WhatsApp, calls, and web chat that capture and qualify leads in real time — without adding headcount.",
         },
         {
-          h: "Custom-built software",
-          p: "Automation designed around your existing processes — no rigid templates, no generic software.",
+          h: "Software with AI built in",
+          p: "We don't bolt an AI feature onto your system: we redesign it with AI at the core, to automate the entire process — not a single task.",
         },
         {
           h: "Scale without overhead",
-          p: "Handle up to 10x more inquiries without needing to hire additional staff right away.",
+          p: "Handle up to 10x more inquiries with the same team — save the cost of hiring, training, and coordinating new staff.",
         },
+        {
+          h: "AI education for individuals",
+          p: "Coaching and education in AI — learn to use models like Gemini, ChatGPT, and Claude in your everyday life: finances, email, calendar, productivity.",
+        },
+      ],
+    },
+    differentiators: {
+      kicker: "Our difference",
+      statement:
+        "We're not systems engineers and we don't compete with programmers. We're AI specialists who solve your company's biggest problems — headcount, cost, inefficiency. Every solution we build has AI integrated at its core, not bolted on as a feature.",
+      points: [
+        "We don't compete with programmers",
+        "AI isn't an add-on",
+        "We solve big problems, not features",
+        "Real automation, not a demo",
       ],
     },
     teams: {
@@ -245,7 +299,7 @@ export const dictionary: Record<Lang, Copy> = {
       p: "You don't coordinate two vendors. One team designs the intelligence, the other puts it in front of your customers — and both answer for the same result.",
       ai: {
         h3: "AI Engineering",
-        p: "Custom agents and automations, integrated with what you already use.",
+        p: "Agents and automations with AI built in, connected to what you already use.",
         items: [
           "Multichannel chatbots — WhatsApp, web, voice",
           "Workflow automation with n8n",
@@ -266,15 +320,25 @@ export const dictionary: Record<Lang, Copy> = {
     },
     audience: {
       kicker: "Who we help",
-      h2: "Built for businesses with a steady flow of inquiries.",
-      p: "We work with small and mid-sized businesses that receive a steady stream of inquiries and feel they're losing sales to slow follow-up or duplicated manual work.",
+      h2: "We work with businesses and with individuals.",
+      p: "We work in any industry. What matters is that the problem is strategic and the solution requires AI built in — not a bolted-on feature.",
+      businessLabel: "For businesses",
+      businessLead:
+        "Built for businesses with a steady flow of inquiries that feel they're losing sales to slow follow-up or duplicated manual work.",
       industries: [
         "Professional services",
         "Real estate",
         "Construction & remodeling",
         "E-commerce",
         "Clinics & healthcare services",
+        "Logistics & distribution",
+        "Finance & insurance",
+        "Retail",
       ],
+      peopleLabel: "For individuals",
+      peopleLead:
+        "Coaching and education in AI for people who want to weave it into their everyday life — not to become technical, just more efficient.",
+      peopleTopics: ["Personal finances", "Email & communication", "Calendar & productivity", "Continuous learning"],
     },
     process: {
       kicker: "How we start",

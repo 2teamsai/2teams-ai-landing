@@ -1,0 +1,103 @@
+.card {
+  position: fixed;
+  left: -10000px;
+  top: 0;
+  width: 1000px;
+  height: 500px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: stretch;
+  gap: 40px;
+  padding: 40px;
+  background: #fafafa;
+}
+
+.logoCol {
+  width: 35%;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 18px;
+}
+
+.logoMark {
+  width: 150px;
+  height: auto;
+  display: block;
+}
+
+.wordmark {
+  display: flex;
+  align-items: baseline;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.wordmarkBlue {
+  color: #4c6fff;
+}
+
+.wordmarkViolet {
+  color: #6c5ce7;
+}
+
+.wordmarkOrange {
+  color: #ff6b3d;
+  font-size: 0.88em;
+}
+
+.infoCol {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 1px solid #e2e2e5;
+  padding-left: 40px;
+}
+
+.name {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.2;
+  color: #12121a;
+  margin: 0;
+}
+
+.role {
+  font-family: var(--font-body), sans-serif;
+  font-weight: 600;
+  font-size: 21px;
+  color: #6c5ce7;
+  margin: 10px 0 0;
+}
+
+.contacts {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contactLine {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.link {
+  color: #2757e8;
+}
+
+.muted {
+  color: #4b5563;
+}

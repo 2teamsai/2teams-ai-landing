@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import Wordmark from "./Wordmark";
+import BusinessCardPrint from "./BusinessCardPrint";
 import { fullName, isPending, type TeamMember } from "@/lib/team";
 import styles from "./BusinessCard.module.css";
 
@@ -47,7 +48,7 @@ export default function BusinessCard({ member, slug }: { member: TeamMember; slu
   const [status, setStatus] = useState<FormStatus>("idle");
   const [form, setForm] = useState({ nombre: "", email: "", mensaje: "" });
   const [imageStatus, setImageStatus] = useState<"idle" | "capturing">("idle");
-  const captureRef = useRef<HTMLDivElement>(null);
+  const printRef = useRef<HTMLDivElement>(null);
 
   const name = fullName(member);
   const telHref = !isPending(member.telefono) ? `tel:${member.telefono.replace(/\s+/g, "")}` : null;
@@ -76,19 +77,22 @@ export default function BusinessCard({ member, slug }: { member: TeamMember; slu
   }
 
   async function handleDownloadImage() {
-    if (!captureRef.current || imageStatus === "capturing") return;
+    if (!printRef.current || imageStatus === "capturing") return;
     setImageStatus("capturing");
     try {
       const { default: html2canvas } = await import("html2canvas");
-      const canvas = await html2canvas(captureRef.current, {
-        backgroundColor: "#05060a",
+      const canvas = await html2canvas(printRef.current, {
+        backgroundColor: "#fafafa",
         scale: 2,
         useCORS: true,
+        width: 1000,
+        height: 500,
       });
       const dataUrl = canvas.toDataURL("image/png");
       const a = document.createElement("a");
       a.href = dataUrl;
-      a.download = `${member.nombre}-2TeamsAI.png`;
+      const lastName = !isPending(member.apellido) ? `-${member.apellido}` : "";
+      a.download = `2Teams-${member.nombre}${lastName}.png`;
       a.click();
     } finally {
       setImageStatus("idle");
@@ -98,7 +102,7 @@ export default function BusinessCard({ member, slug }: { member: TeamMember; slu
   return (
     <main className={styles.page}>
       <div className={styles.card}>
-        <div ref={captureRef} className={styles.captureArea}>
+        <div className={styles.captureArea}>
           <div className={styles.logoBlock}>
             <Image
               src="/brand/logo-mark.png"
@@ -216,11 +220,13 @@ export default function BusinessCard({ member, slug }: { member: TeamMember; slu
           )}
         </div>
       </div>
+
+      <BusinessCardPrint ref={printRef} member={member} />
     </main>
   );
 }
 
-function PhoneIcon() {
+export function PhoneIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
       <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
@@ -236,7 +242,7 @@ function WhatsAppIcon() {
   );
 }
 
-function MailIcon() {
+export function MailIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
       <rect x="2" y="4" width="20" height="16" rx="2" />
@@ -245,7 +251,7 @@ function MailIcon() {
   );
 }
 
-function GlobeIcon() {
+export function GlobeIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
       <circle cx="12" cy="12" r="10" />
@@ -255,7 +261,7 @@ function GlobeIcon() {
   );
 }
 
-function LinkedInIcon() {
+export function LinkedInIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
       <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5.001zM3 8.98h4v12.02H3zm7 0h3.84v1.64h.05c.53-1 1.85-2.06 3.8-2.06 4.07 0 4.82 2.68 4.82 6.16v6.28h-4v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.94v5.67h-4z" />
