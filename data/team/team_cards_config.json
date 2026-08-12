@@ -1,0 +1,54 @@
+{
+  "ezequiel": {
+    "nombre": "Ezequiel",
+    "apellido": "Astudillo",
+    "cargo": "AI & Automation",
+    "bio": "Construyendo sistemas de IA para agencias.",
+    "email": "helloworld@2teams-ai.com",
+    "telefono": "+1 [PENDIENTE]",
+    "whatsapp": "+1 [PENDIENTE]",
+    "linkedin": "[PENDIENTE]",
+    "instagram": "[PENDIENTE]",
+    "website": "https://2teams-ai.com",
+    "foto": "/assets/placeholder-avatar.png"
+  },
+  "patricio": {
+    "nombre": "Patricio",
+    "apellido": "Astudillo",
+    "cargo": "AI & Automation",
+    "bio": "Construyendo sistemas de IA para agencias.",
+    "email": "helloworld@2teams-ai.com",
+    "telefono": "+1 [PENDIENTE]",
+    "whatsapp": "+1 [PENDIENTE]",
+    "linkedin": "[PENDIENTE]",
+    "instagram": "[PENDIENTE]",
+    "website": "https://2teams-ai.com",
+    "foto": "/assets/placeholder-avatar.png"
+  },
+  "micaela": {
+    "nombre": "Micaela",
+    "apellido": "Ayala",
+    "cargo": "Marketing & Social Media",
+    "bio": "Estrategia de crecimiento y contenido digital.",
+    "email": "helloworld@2teams-ai.com",
+    "telefono": "+1 [PENDIENTE]",
+    "whatsapp": "+1 [PENDIENTE]",
+    "linkedin": "[PENDIENTE]",
+    "instagram": "[PENDIENTE]",
+    "website": "https://2teams-ai.com",
+    "foto": "/assets/placeholder-avatar.png"
+  },
+  "carolina": {
+    "nombre": "Carolina",
+    "apellido": "Cardona",
+    "cargo": "Marketing & Social Media",
+    "bio": "Estrategia de crecimiento y contenido digital.",
+    "email": "helloworld@2teams-ai.com",
+    "telefono": "+1 [PENDIENTE]",
+    "whatsapp": "+1 [PENDIENTE]",
+    "linkedin": "[PENDIENTE]",
+    "instagram": "[PENDIENTE]",
+    "website": "https://2teams-ai.com",
+    "foto": "/assets/placeholder-avatar.png"
+  }
+}
