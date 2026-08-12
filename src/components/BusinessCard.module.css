@@ -167,6 +167,10 @@
   opacity: 0.6;
 }
 
+.secondaryBtnWide {
+  grid-column: 1 / -1;
+}
+
 .leadBlock {
   width: 100%;
   margin-top: 32px;

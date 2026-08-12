@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import Wordmark from "./Wordmark";
 import BusinessCardPrint from "./BusinessCardPrint";
+import { downloadQrCode } from "./QRCodeDownload";
 import { fullName, isPending, type TeamMember } from "@/lib/team";
 import styles from "./BusinessCard.module.css";
 
@@ -48,6 +49,7 @@ export default function BusinessCard({ member, slug }: { member: TeamMember; slu
   const [status, setStatus] = useState<FormStatus>("idle");
   const [form, setForm] = useState({ nombre: "", email: "", mensaje: "" });
   const [imageStatus, setImageStatus] = useState<"idle" | "capturing">("idle");
+  const [qrStatus, setQrStatus] = useState<"idle" | "generating">("idle");
   const printRef = useRef<HTMLDivElement>(null);
 
   const name = fullName(member);
@@ -96,6 +98,16 @@ export default function BusinessCard({ member, slug }: { member: TeamMember; slu
       a.click();
     } finally {
       setImageStatus("idle");
+    }
+  }
+
+  async function handleDownloadQr() {
+    if (qrStatus === "generating") return;
+    setQrStatus("generating");
+    try {
+      await downloadQrCode(slug);
+    } finally {
+      setQrStatus("idle");
     }
   }
 
@@ -172,6 +184,14 @@ export default function BusinessCard({ member, slug }: { member: TeamMember; slu
             disabled={imageStatus === "capturing"}
           >
             <ImageIcon /> {imageStatus === "capturing" ? "Generando..." : "Descargar imagen"}
+          </button>
+          <button
+            type="button"
+            className={`${styles.secondaryBtn} ${styles.secondaryBtnWide}`}
+            onClick={handleDownloadQr}
+            disabled={qrStatus === "generating"}
+          >
+            <QrIcon /> {qrStatus === "generating" ? "Generando..." : "Descargar QR"}
           </button>
         </div>
 
@@ -305,6 +325,20 @@ function ImageIcon() {
       <rect x="3" y="3" width="18" height="18" rx="2" />
       <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" stroke="none" />
       <path d="m21 15-5-5L5 21" />
+    </svg>
+  );
+}
+
+function QrIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <rect x="3" y="3" width="7" height="7" rx="1" />
+      <rect x="14" y="3" width="7" height="7" rx="1" />
+      <rect x="3" y="14" width="7" height="7" rx="1" />
+      <path d="M14 14h3v3h-3z" />
+      <path d="M20 14h1v1h-1z" fill="currentColor" stroke="none" />
+      <path d="M14 20h1v1h-1z" fill="currentColor" stroke="none" />
+      <path d="M20 20h1v1h-1z" fill="currentColor" stroke="none" />
     </svg>
   );
 }
