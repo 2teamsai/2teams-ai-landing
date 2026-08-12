@@ -26,6 +26,7 @@ export interface Copy {
   pillars: {
     kicker: string;
     h2: string;
+    p: string;
     items: { h: string; p: string }[];
   };
   differentiators: {
@@ -100,12 +101,13 @@ export const dictionary: Record<Lang, Copy> = {
     problem: {
       kicker: "Automatización inteligente",
       h2: "Software con IA integrada, no funciones agregadas.",
-      p: "No sumamos una función de IA a tu sistema actual: rediseñamos tu operación con IA en el centro, para resolver problemas estratégicos — no para agregar features. Trabajamos con empresas que quieren automatizar procesos y reducir carga operativa, y con personas que quieren aprender a usar la IA en su día a día.",
+      p: "Automatizamos tu operación y aceleramos tu crecimiento — con IA integrada, no como función agregada. Rediseñamos tu negocio con IA en el centro para resolver problemas estratégicos: procesos, marketing y growth. Trabajamos con empresas que quieren escalar sin sumar carga operativa, y con personas que quieren aprender a usar la IA en su día a día.",
       detail: "Muchas empresas pierden una parte importante de sus ingresos por clientes potenciales no atendidos, seguimientos tardíos y tareas manuales repetitivas. Construimos sistemas con IA integrada que responden, gestionan llamadas y optimizan flujos de trabajo las 24 horas, para que tu negocio crezca sin aumentar tus costos operativos.",
     },
     pillars: {
       kicker: "Qué hacemos",
-      h2: "Cuatro frentes, un solo sistema.",
+      h2: "Seis frentes, un solo sistema.",
+      p: "Crecimiento + eficiencia — no elegís uno. Con IA integrada, escalamos tu negocio y optimizamos tu operación al mismo tiempo: menos personal, más clientes, mayor margen.",
       items: [
         {
           h: "Velocidad de respuesta",
@@ -116,8 +118,16 @@ export const dictionary: Record<Lang, Copy> = {
           p: "No agregamos una función de IA a tu sistema: lo rediseñamos con IA en el centro, para automatizar el proceso completo — no una tarea suelta.",
         },
         {
+          h: "Growth Marketing Automatizado",
+          p: "Campañas optimizadas 24/7 con IA que analiza datos en tiempo real — reducí tu costo de adquisición hasta un 30%, sin sumar freelancers.",
+        },
+        {
+          h: "Estrategia de Contenido y Social Media",
+          p: "Contenido generado y optimizado con IA, planificación automática y community management asistido — publicá 3 veces más sin triplicar el equipo.",
+        },
+        {
           h: "Escala sin overhead",
-          p: "Procesá hasta 10 veces más consultas con el mismo equipo — ahorrás el costo de contratar, capacitar y coordinar personal nuevo.",
+          p: "Procesá hasta 10 veces más consultas con IA integrada en tu operación — ahorrás el costo de contratar, capacitar y coordinar personal nuevo.",
         },
         {
           h: "Educación en IA para personas",
@@ -164,7 +174,7 @@ export const dictionary: Record<Lang, Copy> = {
     audience: {
       kicker: "A quién ayudamos",
       h2: "Trabajamos con empresas y con personas.",
-      p: "Trabajamos en cualquier industria. Lo que importa es que el problema sea estratégico y la solución requiera IA integrada — no una función suelta.",
+      p: "Trabajamos en cualquier industria. Lo que importa es que el problema sea estratégico y la solución requiera IA integrada — no una función suelta. En todos los rubros hay una rama de growth: más leads, más conversión, más contenido, con menos esfuerzo manual.",
       businessLabel: "Para empresas",
       businessLead:
         "Pensado para negocios con flujo constante de consultas que sienten que están perdiendo ventas por lentitud en el seguimiento o procesos manuales duplicados.",
@@ -177,6 +187,8 @@ export const dictionary: Record<Lang, Copy> = {
         "Logística y distribución",
         "Finanzas y seguros",
         "Retail",
+        "Agencias de marketing",
+        "SaaS y startups",
       ],
       peopleLabel: "Para personas",
       peopleLead:
@@ -218,6 +230,18 @@ export const dictionary: Record<Lang, Copy> = {
           h: "Bilingüe de origen",
           p: "Trabajamos en español e inglés de forma nativa — no como traducción, sino como parte del equipo.",
         },
+        {
+          h: "IA que optimiza campañas sin freelancers",
+          p: "Ajustamos presupuesto, segmentación y creatividades en tiempo real — sin depender de un freelancer part-time.",
+        },
+        {
+          h: "Análisis de datos en tiempo real",
+          p: "Vemos qué funciona (y qué no) al instante, no en un reporte mensual armado a mano.",
+        },
+        {
+          h: "Escalabilidad de contenido sin aumentar equipo",
+          p: "Multiplicás tu producción de contenido sin multiplicar tu nómina.",
+        },
       ],
     },
     origin: {
@@ -256,13 +280,14 @@ export const dictionary: Record<Lang, Copy> = {
     problem: {
       kicker: "Intelligent automation",
       h2: "Software with AI built in, not features bolted on.",
-      p: "We don't add an AI feature to your existing system: we redesign your operation with AI at the core, to solve strategic problems — not to ship features. We work with businesses that want to automate processes and cut operational overhead, and with people who want to learn to use AI in their everyday life.",
+      p: "We automate your operations and accelerate your growth — with AI built in, not bolted on as a feature. We redesign your business with AI at the core to solve strategic problems: operations, marketing, and growth. We work with businesses that want to scale without adding operational overhead, and with people who want to learn to use AI in their everyday life.",
       detail:
         "Many businesses lose a significant share of their revenue to unattended leads, late follow-ups, and repetitive manual tasks. We build systems with AI built in that respond, handle calls, and optimize workflows around the clock — so your business grows without growing your operating costs.",
     },
     pillars: {
       kicker: "What we do",
-      h2: "Four fronts, one system.",
+      h2: "Six fronts, one system.",
+      p: "Growth + efficiency — you don't have to pick one. With AI built in, we scale your business and optimize your operations at the same time: less headcount, more customers, higher margin.",
       items: [
         {
           h: "Response speed",
@@ -273,8 +298,16 @@ export const dictionary: Record<Lang, Copy> = {
           p: "We don't bolt an AI feature onto your system: we redesign it with AI at the core, to automate the entire process — not a single task.",
         },
         {
+          h: "Automated growth marketing",
+          p: "Campaigns that optimize themselves 24/7 with AI analyzing real-time data — cut your customer acquisition cost by up to 30%, without adding freelancers.",
+        },
+        {
+          h: "Content strategy & social media",
+          p: "AI-generated and AI-optimized content, automatic planning, and assisted community management — publish 3x more without tripling your team.",
+        },
+        {
           h: "Scale without overhead",
-          p: "Handle up to 10x more inquiries with the same team — save the cost of hiring, training, and coordinating new staff.",
+          p: "Handle up to 10x more inquiries with AI built into your operation — save the cost of hiring, training, and coordinating new staff.",
         },
         {
           h: "AI education for individuals",
@@ -321,7 +354,7 @@ export const dictionary: Record<Lang, Copy> = {
     audience: {
       kicker: "Who we help",
       h2: "We work with businesses and with individuals.",
-      p: "We work in any industry. What matters is that the problem is strategic and the solution requires AI built in — not a bolted-on feature.",
+      p: "We work in any industry. What matters is that the problem is strategic and the solution requires AI built in — not a bolted-on feature. Every industry has a growth angle: more leads, more conversion, more content, with less manual effort.",
       businessLabel: "For businesses",
       businessLead:
         "Built for businesses with a steady flow of inquiries that feel they're losing sales to slow follow-up or duplicated manual work.",
@@ -334,6 +367,8 @@ export const dictionary: Record<Lang, Copy> = {
         "Logistics & distribution",
         "Finance & insurance",
         "Retail",
+        "Marketing agencies",
+        "SaaS & startups",
       ],
       peopleLabel: "For individuals",
       peopleLead:
@@ -374,6 +409,18 @@ export const dictionary: Record<Lang, Copy> = {
         {
           h: "Bilingual by design",
           p: "We work natively in Spanish and English — not as a translation, but as part of the team.",
+        },
+        {
+          h: "AI that optimizes campaigns without freelancers",
+          p: "We adjust budget, targeting, and creative in real time — no part-time freelancer required.",
+        },
+        {
+          h: "Real-time data analysis",
+          p: "We see what's working (and what isn't) instantly, not in a hand-built monthly report.",
+        },
+        {
+          h: "Content scalability without growing your team",
+          p: "Multiply your content output without multiplying headcount.",
         },
       ],
     },

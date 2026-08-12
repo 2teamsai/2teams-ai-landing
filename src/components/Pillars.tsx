@@ -12,6 +12,7 @@ export default function Pillars() {
         <div className="sectionHeader">
           <span className="kicker">{t.pillars.kicker}</span>
           <h2 className="sectionTitle">{t.pillars.h2}</h2>
+          <p className="sectionLead">{t.pillars.p}</p>
         </div>
 
         <div className={styles.grid}>
