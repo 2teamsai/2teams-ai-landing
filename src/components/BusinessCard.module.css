@@ -88,6 +88,17 @@
   max-width: 320px;
 }
 
+.phone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 14px;
+  font-family: var(--font-mono), monospace;
+  font-size: 14px;
+  color: var(--ink-muted);
+}
+
 .actions {
   width: 100%;
   display: flex;

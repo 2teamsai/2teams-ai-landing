@@ -135,6 +135,11 @@ export default function BusinessCard({ member, slug }: { member: TeamMember; slu
           <h1 className={styles.name}>{name}</h1>
           <p className={styles.role}>{member.cargo}</p>
           {!isPending(member.bio) && <p className={styles.bio}>{member.bio}</p>}
+          {!isPending(member.telefono) && (
+            <p className={styles.phone}>
+              <PhoneIcon /> {member.telefono}
+            </p>
+          )}
         </div>
 
         <div className={styles.actions}>
