@@ -180,9 +180,6 @@ export default function BusinessCard({ member, slug }: { member: TeamMember; slu
         </button>
 
         <div className={styles.secondaryRow}>
-          <a className={styles.secondaryBtn} href={`/api/wallet/${slug}`} target="_blank" rel="noopener noreferrer">
-            <WalletIcon /> Google Wallet
-          </a>
           <button
             type="button"
             className={styles.secondaryBtn}
@@ -193,7 +190,7 @@ export default function BusinessCard({ member, slug }: { member: TeamMember; slu
           </button>
           <button
             type="button"
-            className={`${styles.secondaryBtn} ${styles.secondaryBtnWide}`}
+            className={styles.secondaryBtn}
             onClick={handleDownloadQr}
             disabled={qrStatus === "generating"}
           >
@@ -311,16 +308,6 @@ function DownloadIcon() {
       <path d="M12 3v12" />
       <path d="m7 10 5 5 5-5" />
       <path d="M5 21h14" />
-    </svg>
-  );
-}
-
-function WalletIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <rect x="2" y="6" width="20" height="14" rx="2" />
-      <path d="M2 10h20" />
-      <circle cx="17" cy="15" r="1.3" fill="currentColor" stroke="none" />
     </svg>
   );
 }
