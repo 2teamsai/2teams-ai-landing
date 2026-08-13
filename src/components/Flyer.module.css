@@ -1,0 +1,274 @@
+.flyer {
+  width: 1000px;
+  height: 1400px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #ffffff 0%, #f4f6ff 55%, #f1f0fb 100%);
+  color: #12121a;
+  font-family: var(--font-body), sans-serif;
+  box-sizing: border-box;
+}
+
+/* ---------- Header ---------- */
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 56px 0 32px;
+  text-align: center;
+}
+
+.logo {
+  width: 64px;
+  height: auto;
+}
+
+.wordmark {
+  margin-top: 12px;
+  display: inline-flex;
+  align-items: baseline;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: 46px;
+}
+
+.wmBlue {
+  color: #4c6fff;
+}
+
+.wmViolet {
+  color: #6c5ce7;
+}
+
+.wmOrange {
+  color: #ff6b3d;
+  font-size: 0.88em;
+}
+
+.slogan {
+  margin-top: 6px;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #ff6b3d;
+  letter-spacing: 0.3px;
+}
+
+/* ---------- Headline ---------- */
+
+.headlineBlock {
+  padding: 8px 64px 32px;
+  text-align: center;
+}
+
+.headline {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: 46px;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+}
+
+/* ---------- Services ---------- */
+
+.services {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  padding: 0 56px;
+}
+
+.servicesSingle {
+  grid-template-columns: 1fr;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.serviceCol {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(18, 18, 26, 0.08);
+  border-radius: 20px;
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.serviceTitle {
+  font-family: var(--font-mono), monospace;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.accentBlue {
+  color: #3357e0;
+}
+
+.accentViolet {
+  color: #6c5ce7;
+}
+
+.serviceList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.serviceList li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 18px;
+  line-height: 1.4;
+  color: #23232e;
+}
+
+.checkDot {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  margin-top: 1px;
+}
+
+.checkDotBlue {
+  background: #4c6fff;
+}
+
+.checkDotViolet {
+  background: #6c5ce7;
+}
+
+/* ---------- Differential ---------- */
+
+.differential {
+  margin: 28px 56px;
+  background: linear-gradient(90deg, #ffe6d9, #ffd9c2);
+  border-radius: 16px;
+  padding: 22px 32px;
+  text-align: center;
+}
+
+.differential p {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #7a3210;
+}
+
+/* ---------- CTA ---------- */
+
+.ctaBlock {
+  margin: 0 56px;
+  background: #12121a;
+  border-radius: 20px;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.ctaContact {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ctaLabel {
+  font-family: var(--font-mono), monospace;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #8a90a6;
+  margin-bottom: 4px;
+}
+
+.ctaLine {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 17px;
+  color: #f3f4f8;
+}
+
+.ctaLine svg {
+  color: #ffa35c;
+  flex-shrink: 0;
+}
+
+.ctaButton {
+  margin-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #4c6fff, #6c5ce7);
+  color: #ffffff;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  width: fit-content;
+}
+
+.qrBox {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.qrImg {
+  width: 140px;
+  height: 140px;
+}
+
+.qrImg svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.qrBox span {
+  font-size: 11px;
+  color: #4b5563;
+  text-align: center;
+  max-width: 120px;
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  margin-top: auto;
+  padding: 28px 0 40px;
+  text-align: center;
+}
+
+.footer p {
+  font-size: 13px;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+.footer p:first-child {
+  font-family: var(--font-mono), monospace;
+  letter-spacing: 1px;
+}
