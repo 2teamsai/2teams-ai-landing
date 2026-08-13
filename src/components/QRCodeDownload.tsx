@@ -1,6 +1,6 @@
 const SITE_URL = "https://2teams-ai.com";
 const CANVAS_WIDTH = 500;
-const CANVAS_HEIGHT = 600;
+const CANVAS_HEIGHT = 620;
 const QR_SIZE = 420;
 const QR_MARGIN = 40;
 const EXPORT_SCALE = 2;
@@ -53,11 +53,15 @@ export async function downloadQrCode(slug: string): Promise<void> {
   ctx.textAlign = "center";
   ctx.fillStyle = "#12121a";
   ctx.font = `700 26px ${displayFont}`;
-  ctx.fillText(`2Teams.AI / ${displayName}`, CANVAS_WIDTH / 2, dividerY + 40);
+  ctx.fillText(`2Teams.AI / ${displayName}`, CANVAS_WIDTH / 2, dividerY + 34);
+
+  ctx.fillStyle = "#6c5ce7";
+  ctx.font = `600 15px ${displayFont}`;
+  ctx.fillText("Soluciones Inteligentes", CANVAS_WIDTH / 2, dividerY + 58);
 
   ctx.fillStyle = "#4b5563";
   ctx.font = `500 18px ${bodyFont}`;
-  ctx.fillText(`2teams-ai.com/${slug}`, CANVAS_WIDTH / 2, dividerY + 70);
+  ctx.fillText(`2teams-ai.com/${slug}`, CANVAS_WIDTH / 2, dividerY + 88);
 
   const dataUrl = canvas.toDataURL("image/png");
   const a = document.createElement("a");

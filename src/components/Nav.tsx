@@ -11,7 +11,7 @@ export default function Nav() {
     <header className={styles.nav}>
       <div className={`container ${styles.inner}`}>
         <a href="#top" aria-label="2Teams.AI">
-          <Brand size="nav" />
+          <Brand size="nav" slogan={t.hero.slogan} />
         </a>
 
         <nav className={styles.links}>

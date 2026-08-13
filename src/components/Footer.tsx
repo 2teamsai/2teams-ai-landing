@@ -11,7 +11,7 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={`container ${styles.inner}`}>
-        <Brand size="footer" />
+        <Brand size="footer" slogan={t.hero.slogan} />
         <span className={styles.locations}>{t.footer.locations}</span>
         <span className={styles.copyright}>© {year} 2Teams.AI</span>
       </div>

@@ -28,6 +28,12 @@
   display: block;
 }
 
+.wordmarkGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .wordmark {
   display: flex;
   align-items: baseline;
@@ -49,6 +55,15 @@
 .wordmarkOrange {
   color: #ff6b3d;
   font-size: 0.88em;
+}
+
+.slogan {
+  margin: 0;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+  color: #6c5ce7;
 }
 
 .infoCol {

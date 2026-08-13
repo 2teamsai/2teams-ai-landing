@@ -125,6 +125,7 @@ export default function BusinessCard({ member, slug }: { member: TeamMember; slu
               priority
             />
             <Wordmark as="div" size="nav" />
+            <p className={styles.slogan}>Soluciones Inteligentes</p>
           </div>
 
           <div className={styles.avatarWrap}>

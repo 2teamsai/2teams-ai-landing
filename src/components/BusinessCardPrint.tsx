@@ -18,10 +18,13 @@ const BusinessCardPrint = forwardRef<HTMLDivElement, { member: TeamMember }>(fun
       <div className={styles.logoCol}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/brand/logo-mark.png" alt="" className={styles.logoMark} />
-        <div className={styles.wordmark}>
-          <span className={styles.wordmarkBlue}>2T</span>
-          <span className={styles.wordmarkViolet}>eams</span>
-          <span className={styles.wordmarkOrange}>.AI</span>
+        <div className={styles.wordmarkGroup}>
+          <div className={styles.wordmark}>
+            <span className={styles.wordmarkBlue}>2T</span>
+            <span className={styles.wordmarkViolet}>eams</span>
+            <span className={styles.wordmarkOrange}>.AI</span>
+          </div>
+          <p className={styles.slogan}>Soluciones Inteligentes</p>
         </div>
       </div>
 

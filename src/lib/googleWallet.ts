@@ -50,7 +50,7 @@ export function buildSaveToWalletUrl(member: TeamMember, slug: string, config: W
     genericType: "GENERIC_TYPE_UNSPECIFIED",
     hexBackgroundColor: "#05060a",
     logo: { sourceUri: { uri: `${SITE_URL}/brand/logo-mark.png` } },
-    cardTitle: { defaultValue: { language: "es", value: "2Teams.AI" } },
+    cardTitle: { defaultValue: { language: "es", value: "2Teams.AI · Soluciones Inteligentes" } },
     header: { defaultValue: { language: "es", value: name } },
     subheader: { defaultValue: { language: "es", value: member.cargo } },
     textModulesData,

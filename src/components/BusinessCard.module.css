@@ -38,6 +38,15 @@
   height: auto;
 }
 
+.slogan {
+  margin-top: -4px;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+  color: var(--violet-2);
+}
+
 .avatarWrap {
   width: 112px;
   height: 112px;
