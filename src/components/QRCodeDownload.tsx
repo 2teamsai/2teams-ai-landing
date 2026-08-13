@@ -55,7 +55,7 @@ export async function downloadQrCode(slug: string): Promise<void> {
   ctx.font = `700 26px ${displayFont}`;
   ctx.fillText(`2Teams.AI / ${displayName}`, CANVAS_WIDTH / 2, dividerY + 34);
 
-  ctx.fillStyle = "#6c5ce7";
+  ctx.fillStyle = "#ff6b3d";
   ctx.font = `600 15px ${displayFont}`;
   ctx.fillText("Soluciones Inteligentes", CANVAS_WIDTH / 2, dividerY + 58);
 
