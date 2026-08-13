@@ -152,27 +152,10 @@
   background: #6c5ce7;
 }
 
-/* ---------- Differential ---------- */
-
-.differential {
-  margin: 28px 56px;
-  background: linear-gradient(90deg, #ffe6d9, #ffd9c2);
-  border-radius: 16px;
-  padding: 22px 32px;
-  text-align: center;
-}
-
-.differential p {
-  font-family: var(--font-display), sans-serif;
-  font-weight: 700;
-  font-size: 24px;
-  color: #7a3210;
-}
-
 /* ---------- CTA ---------- */
 
 .ctaBlock {
-  margin: 0 56px;
+  margin: 28px 56px 0;
   background: #12121a;
   border-radius: 20px;
   padding: 32px;

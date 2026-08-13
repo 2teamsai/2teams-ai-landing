@@ -145,11 +145,6 @@ export default async function Flyer({ variant }: { variant: Variant }) {
         ))}
       </div>
 
-      {/* DIFERENCIAL */}
-      <div className={styles.differential}>
-        <p>Resultados medibles en 30 días o no pagás.</p>
-      </div>
-
       {/* CTA */}
       <div className={styles.ctaBlock}>
         <div className={styles.ctaContact}>
