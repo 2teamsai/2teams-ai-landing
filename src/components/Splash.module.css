@@ -31,6 +31,15 @@
   transition: opacity 1.1s ease;
 }
 
+.slogan {
+  margin-top: 6px;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 600;
+  font-size: clamp(13px, 1.6vw, 17px);
+  letter-spacing: 0.3px;
+  color: var(--violet-2);
+}
+
 .eyebrow {
   margin-top: 8px;
   font-family: var(--font-mono), monospace;

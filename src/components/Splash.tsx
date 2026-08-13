@@ -32,6 +32,7 @@ export default function Splash() {
 
         <div className={`${styles.logoBlock} ${loaded ? styles.loaded : ""}`}>
           <Wordmark as="div" size="heroCompact" />
+          <p className={styles.slogan}>{t.hero.slogan}</p>
         </div>
       </div>
 

@@ -10,6 +10,7 @@ export interface Copy {
   };
   hero: {
     eyebrow: string;
+    slogan: string;
     h1a: string;
     h1b: string;
     sub: string;
@@ -91,6 +92,7 @@ export const dictionary: Record<Lang, Copy> = {
     },
     hero: {
       eyebrow: "Agencia de IA + Marketing — USA · Argentina · Colombia",
+      slogan: "Soluciones Inteligentes",
       h1a: "IA que construye.",
       h1b: "Crecimiento que se acumula.",
       sub: "2Teams.AI une un equipo de ingeniería en IA con un equipo de growth marketing, bajo un mismo techo y un solo contrato.",
@@ -137,11 +139,10 @@ export const dictionary: Record<Lang, Copy> = {
     },
     differentiators: {
       kicker: "Nuestro diferencial",
-      statement:
-        "No somos ingenieros en sistemas ni competimos con programadores. Somos especialistas en Inteligencia Artificial que resuelven los problemas más grandes de tu empresa — personal, costo, ineficiencia. Cada solución que construimos tiene IA integrada en su core, no como un feature agregado.",
+      statement: "No vendemos Inteligencia Artificial. Vendemos resultados.",
       points: [
-        "No competimos con programadores",
-        "La IA no es un agregado",
+        "Sistemas que trabajan 24/7 mientras descansás",
+        "Escalás sin contratar más personal",
         "Resolvemos problemas grandes, no features",
         "Automatización de verdad, no simulación",
       ],
@@ -154,20 +155,26 @@ export const dictionary: Record<Lang, Copy> = {
         h3: "Ingeniería de IA",
         p: "Agentes y automatizaciones con IA integrada, conectados con lo que ya usás.",
         items: [
-          "Chatbots multicanal — WhatsApp, web, voz",
-          "Automatización de flujos con n8n",
-          "Agentes IA a medida para tu operación",
-          "Integración con tus sistemas actuales",
+          "Automatizar procesos repetitivos",
+          "Responder emails automáticamente",
+          "Agendar citas sin intervención manual",
+          "Generar reportes automáticos",
+          "Alertas inteligentes para lo importante",
+          "Procesar documentos sin intervención",
+          "Análisis de datos en tiempo real",
         ],
       },
       growth: {
         h3: "Marketing & Growth",
         p: "Estrategia y ejecución para que ese producto llegue a más gente.",
         items: [
-          "Estrategia de contenido y marca",
-          "Campañas pagas (Meta, Google)",
-          "SEO y posicionamiento orgánico",
-          "Gestión de redes y comunidad",
+          "Crear contenido automáticamente",
+          "Publicar en redes sin estar pendiente",
+          "Saber qué vende y qué no",
+          "Responder clientes automáticamente",
+          "Campañas que se ajustan solas",
+          "Encontrar tu cliente ideal automáticamente",
+          "Mensajes personalizados sin escribirlos",
         ],
       },
     },
@@ -227,8 +234,8 @@ export const dictionary: Record<Lang, Copy> = {
           p: "No coordinás una agencia de marketing y otra de tecnología por separado. Un equipo, una responsabilidad.",
         },
         {
-          h: "Bilingüe de origen",
-          p: "Trabajamos en español e inglés de forma nativa — no como traducción, sino como parte del equipo.",
+          h: "Hablamos inglés",
+          p: "De forma nativa, no traducido — hablamos con vos y con tus clientes en el idioma que necesiten.",
         },
         {
           h: "IA que optimiza campañas sin freelancers",
@@ -253,7 +260,7 @@ export const dictionary: Record<Lang, Copy> = {
       kicker: "Empecemos",
       h2: "Contanos qué querés construir.",
       p: "Una llamada de 20 minutos para ver si encajamos.",
-      email: "hello@2teams.ai",
+      email: "helloworld@2teams-ai.com",
       cta: "Hablemos",
     },
     footer: {
@@ -270,6 +277,7 @@ export const dictionary: Record<Lang, Copy> = {
     },
     hero: {
       eyebrow: "AI + Marketing agency — USA · Argentina · Colombia",
+      slogan: "Intelligent Solutions",
       h1a: "AI that builds.",
       h1b: "Growth that compounds.",
       sub: "2Teams.AI pairs an AI engineering team with a growth marketing team, under one roof and one contract.",
@@ -317,11 +325,10 @@ export const dictionary: Record<Lang, Copy> = {
     },
     differentiators: {
       kicker: "Our difference",
-      statement:
-        "We're not systems engineers and we don't compete with programmers. We're AI specialists who solve your company's biggest problems — headcount, cost, inefficiency. Every solution we build has AI integrated at its core, not bolted on as a feature.",
+      statement: "We don't sell Artificial Intelligence. We sell results.",
       points: [
-        "We don't compete with programmers",
-        "AI isn't an add-on",
+        "Systems that work 24/7 while you rest",
+        "You scale without hiring more people",
         "We solve big problems, not features",
         "Real automation, not a demo",
       ],
@@ -334,20 +341,26 @@ export const dictionary: Record<Lang, Copy> = {
         h3: "AI Engineering",
         p: "Agents and automations with AI built in, connected to what you already use.",
         items: [
-          "Multichannel chatbots — WhatsApp, web, voice",
-          "Workflow automation with n8n",
-          "Custom AI agents for your operation",
-          "Integration with your current systems",
+          "Automate repetitive processes",
+          "Reply to emails automatically",
+          "Schedule appointments with no manual work",
+          "Generate reports automatically",
+          "Smart alerts for what matters",
+          "Process documents with no manual work",
+          "Real-time data analysis",
         ],
       },
       growth: {
         h3: "Marketing & Growth",
         p: "Strategy and execution so that product reaches more people.",
         items: [
-          "Content and brand strategy",
-          "Paid campaigns (Meta, Google)",
-          "SEO and organic positioning",
-          "Social media and community management",
+          "Create content automatically",
+          "Post on social without babysitting it",
+          "Know what's selling and what's not",
+          "Reply to customers automatically",
+          "Campaigns that adjust themselves",
+          "Find your ideal customer automatically",
+          "Personalized messages without writing them",
         ],
       },
     },
@@ -407,8 +420,8 @@ export const dictionary: Record<Lang, Copy> = {
           p: "You're not coordinating a marketing agency and a tech vendor separately. One team, one accountability.",
         },
         {
-          h: "Bilingual by design",
-          p: "We work natively in Spanish and English — not as a translation, but as part of the team.",
+          h: "We speak English",
+          p: "Natively, not translated — we talk to you and your customers in whichever language they need.",
         },
         {
           h: "AI that optimizes campaigns without freelancers",
@@ -433,7 +446,7 @@ export const dictionary: Record<Lang, Copy> = {
       kicker: "Let's start",
       h2: "Tell us what you want to build.",
       p: "A 20-minute call to see if we're a fit.",
-      email: "hello@2teams.ai",
+      email: "helloworld@2teams-ai.com",
       cta: "Let's talk",
     },
     footer: {
