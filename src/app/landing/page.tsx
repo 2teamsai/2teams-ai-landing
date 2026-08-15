@@ -8,6 +8,7 @@ import Audience from "@/components/Audience";
 import Process from "@/components/Process";
 import Why from "@/components/Why";
 import Origin from "@/components/Origin";
+import SuccessCases from "@/components/SuccessCases";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -25,6 +26,7 @@ export default function LandingPage() {
         <Process />
         <Why />
         <Origin />
+        <SuccessCases />
         <Contact />
       </main>
       <Footer />

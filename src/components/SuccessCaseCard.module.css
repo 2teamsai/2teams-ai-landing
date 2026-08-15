@@ -1,0 +1,129 @@
+.card {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-left: 3px solid transparent;
+  border-radius: 16px;
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.orange {
+  border-left-color: var(--orange-2);
+}
+
+.violet {
+  border-left-color: var(--violet-2);
+}
+
+.blue {
+  border-left-color: var(--blue);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logoPlaceholder {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--ink-muted);
+}
+
+.company {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--ink);
+}
+
+.industry {
+  margin-top: 2px;
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.testimonial {
+  margin-top: 20px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 15px;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--ink-muted);
+}
+
+.resultsLabel {
+  margin-top: 22px;
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.results {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+}
+
+.results li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+.checkDot {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--orange-2);
+  color: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+.violet .checkDot {
+  background: var(--violet-2);
+}
+
+.blue .checkDot {
+  background: var(--blue);
+  color: var(--ink);
+}
+
+.attribution {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-body), sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-faint);
+}

@@ -69,6 +69,12 @@ export interface Copy {
     h2: string;
     p: string;
   };
+  successCases: {
+    kicker: string;
+    h2: string;
+    p: string;
+    resultsLabel: string;
+  };
   contact: {
     kicker: string;
     h2: string;
@@ -256,6 +262,12 @@ export const dictionary: Record<Lang, Copy> = {
       h2: "Tres países, un mismo equipo.",
       p: "Nacimos como un equipo repartido en tres países, uniendo ingeniería de IA y estrategia de marketing bajo una sola visión: que ninguna empresa tenga que elegir entre tecnología y crecimiento.",
     },
+    successCases: {
+      kicker: "Casos de éxito",
+      h2: "Casos de Éxito",
+      p: "Resultados reales de empresas que confiaron en 2Teams.AI.",
+      resultsLabel: "Resultado clave",
+    },
     contact: {
       kicker: "Empecemos",
       h2: "Contanos qué querés construir.",
@@ -441,6 +453,12 @@ export const dictionary: Record<Lang, Copy> = {
       kicker: "Our origin",
       h2: "Three countries, one team.",
       p: "We started as a team spread across three countries, joining AI engineering and marketing strategy under one vision: no business should have to choose between technology and growth.",
+    },
+    successCases: {
+      kicker: "Success cases",
+      h2: "Success Cases",
+      p: "Real results from companies that trusted 2Teams.AI.",
+      resultsLabel: "Key results",
     },
     contact: {
       kicker: "Let's start",
