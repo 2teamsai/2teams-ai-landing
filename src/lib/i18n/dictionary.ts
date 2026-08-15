@@ -85,6 +85,16 @@ export interface Copy {
   footer: {
     locations: string;
   };
+  chat: {
+    title: string;
+    greeting: string;
+    placeholder: string;
+    send: string;
+    thinking: string;
+    error: string;
+    openLabel: string;
+    closeLabel: string;
+  };
 }
 
 export const dictionary: Record<Lang, Copy> = {
@@ -278,6 +288,16 @@ export const dictionary: Record<Lang, Copy> = {
     footer: {
       locations: "USA · Argentina · Colombia",
     },
+    chat: {
+      title: "Teambot",
+      greeting: "¡Hola! Soy Teambot, el asistente de 2Teams.AI 🧠 ¿Cuál es tu nombre? ¿En qué puedo ayudarte?",
+      placeholder: "Escribí tu mensaje...",
+      send: "Enviar",
+      thinking: "Escribiendo...",
+      error: "Uy, algo falló. Probá de nuevo en un momento.",
+      openLabel: "Abrir chat",
+      closeLabel: "Cerrar chat",
+    },
   },
   en: {
     nav: {
@@ -469,6 +489,16 @@ export const dictionary: Record<Lang, Copy> = {
     },
     footer: {
       locations: "USA · Argentina · Colombia",
+    },
+    chat: {
+      title: "Teambot",
+      greeting: "Hi! I'm Teambot, 2Teams.AI's assistant 🧠 What's your name? How can I help?",
+      placeholder: "Type your message...",
+      send: "Send",
+      thinking: "Typing...",
+      error: "Oops, something failed. Try again in a moment.",
+      openLabel: "Open chat",
+      closeLabel: "Close chat",
     },
   },
 };

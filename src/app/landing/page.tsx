@@ -11,6 +11,7 @@ import Origin from "@/components/Origin";
 import SuccessCases from "@/components/SuccessCases";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import ChatWidget from "@/components/ChatWidget";
 
 export default function LandingPage() {
   return (
@@ -30,6 +31,7 @@ export default function LandingPage() {
         <Contact />
       </main>
       <Footer />
+      <ChatWidget />
     </>
   );
 }
