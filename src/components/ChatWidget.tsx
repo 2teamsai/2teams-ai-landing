@@ -76,17 +76,22 @@ export default function ChatWidget() {
   return (
     <>
       {!open && (
-        <button
-          type="button"
-          className={styles.node}
-          onClick={handleOpen}
-          aria-label={t.chat.openLabel}
-        >
-          <span className={styles.nodeOrbit} aria-hidden="true" />
-          <span className={styles.nodeCore}>
-            <Image src="/brand/teambot-icon.png" alt="" width={62} height={62} className={styles.nodeIcon} priority />
-          </span>
-        </button>
+        <>
+          <button type="button" className={styles.hint} onClick={handleOpen} aria-hidden="true" tabIndex={-1}>
+            Hello World
+          </button>
+          <button
+            type="button"
+            className={styles.node}
+            onClick={handleOpen}
+            aria-label={t.chat.openLabel}
+          >
+            <span className={styles.nodeOrbit} aria-hidden="true" />
+            <span className={styles.nodeCore}>
+              <Image src="/brand/teambot-icon.png" alt="" width={62} height={62} className={styles.nodeIcon} priority />
+            </span>
+          </button>
+        </>
       )}
 
       {open && (
