@@ -30,11 +30,19 @@ export default function ChatWidget() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [dodge, setDodge] = useState({ x: 0, y: 0, rotate: 0 });
   const scrollRef = useRef<HTMLDivElement>(null);
 
   function handleOpen() {
     setOpen(true);
     setMessages((prev) => (prev.length === 0 ? [{ role: "model", text: t.chat.greeting }] : prev));
+  }
+
+  function handleHintDodge() {
+    const x = (Math.random() - 0.5) * 90 - 20;
+    const y = (Math.random() - 0.5) * 50;
+    const rotate = (Math.random() - 0.5) * 20;
+    setDodge({ x, y, rotate });
   }
 
   useEffect(() => {
@@ -77,8 +85,20 @@ export default function ChatWidget() {
     <>
       {!open && (
         <>
-          <button type="button" className={styles.hint} onClick={handleOpen} aria-hidden="true" tabIndex={-1}>
-            <span className={styles.hintText}>Hello World!</span>
+          <button
+            type="button"
+            className={styles.hint}
+            onClick={handleOpen}
+            onMouseEnter={handleHintDodge}
+            aria-hidden="true"
+            tabIndex={-1}
+          >
+            <span
+              className={styles.hintText}
+              style={{ transform: `translate(${dodge.x}px, ${dodge.y}px) rotate(${dodge.rotate}deg)` }}
+            >
+              Hello World!
+            </span>
           </button>
           <button
             type="button"

@@ -41,11 +41,7 @@
     -1.5px 1.5px 0 var(--bg),
     1.5px 1.5px 0 var(--bg),
     0 3px 10px rgba(0, 0, 0, 0.6);
-  transition: transform 0.3s ease;
-}
-
-.hint:hover .hintText {
-  transform: translateX(-14px) rotate(-4deg);
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 @keyframes hintPulse {
