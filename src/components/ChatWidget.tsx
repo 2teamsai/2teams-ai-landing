@@ -84,7 +84,7 @@ export default function ChatWidget() {
         >
           <span className={styles.nodeOrbit} aria-hidden="true" />
           <span className={styles.nodeCore}>
-            <Image src="/brand/teambot-icon.png" alt="" width={44} height={44} className={styles.nodeIcon} priority />
+            <Image src="/brand/teambot-icon.png" alt="" width={62} height={62} className={styles.nodeIcon} priority />
           </span>
         </button>
       )}
