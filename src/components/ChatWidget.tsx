@@ -78,7 +78,7 @@ export default function ChatWidget() {
       {!open && (
         <>
           <button type="button" className={styles.hint} onClick={handleOpen} aria-hidden="true" tabIndex={-1}>
-            Hello World
+            <span className={styles.hintText}>Hello World!</span>
           </button>
           <button
             type="button"

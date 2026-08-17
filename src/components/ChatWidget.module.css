@@ -17,34 +17,35 @@
 .hint {
   position: fixed;
   right: 104px;
-  bottom: 42px;
+  bottom: 50px;
   z-index: 100;
-  padding: 10px 16px;
-  border-radius: 14px;
-  background: var(--bg-elev);
-  border: 1px solid var(--line);
-  color: var(--ink);
-  font-family: var(--font-body), sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  white-space: nowrap;
+  padding: 0;
+  background: none;
+  border: none;
   cursor: pointer;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   opacity: 0;
-  animation: hintPulse 6s ease-in-out infinite;
+  animation: hintPulse 2.4s ease-in-out infinite;
 }
 
-.hint::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: -6px;
-  width: 12px;
-  height: 12px;
-  transform: translateY(-50%) rotate(45deg);
-  background: var(--bg-elev);
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+.hintText {
+  display: inline-block;
+  font-family: var(--font-display), sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--orange-2);
+  white-space: nowrap;
+  text-shadow:
+    0 0 8px var(--bg),
+    -1.5px -1.5px 0 var(--bg),
+    1.5px -1.5px 0 var(--bg),
+    -1.5px 1.5px 0 var(--bg),
+    1.5px 1.5px 0 var(--bg),
+    0 3px 10px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease;
+}
+
+.hint:hover .hintText {
+  transform: translateX(-14px) rotate(-4deg);
 }
 
 @keyframes hintPulse {
@@ -53,8 +54,8 @@
     opacity: 0;
     transform: translateY(4px);
   }
-  15%,
-  55% {
+  20%,
+  50% {
     opacity: 1;
     transform: translateY(0);
   }
@@ -314,9 +315,10 @@
     bottom: 16px;
   }
   .hint {
-    right: 96px;
-    bottom: 34px;
-    font-size: 13px;
-    padding: 8px 14px;
+    right: 92px;
+    bottom: 42px;
+  }
+  .hintText {
+    font-size: 14px;
   }
 }
