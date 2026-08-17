@@ -1,28 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
 import styles from "./ChatWidget.module.css";
 
 type Message = { role: "user" | "model"; text: string };
-
-function NodeIcon() {
-  return (
-    <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-      <circle cx="12" cy="12" r="3" fill="currentColor" />
-      <circle cx="5" cy="6" r="1.6" fill="currentColor" />
-      <circle cx="19" cy="6" r="1.6" fill="currentColor" />
-      <circle cx="5" cy="18" r="1.6" fill="currentColor" />
-      <circle cx="19" cy="18" r="1.6" fill="currentColor" />
-      <path
-        d="M9.8 10.3 6 6.8M14.2 10.3 18 6.8M9.8 13.7 6 17.2M14.2 13.7 18 17.2"
-        stroke="currentColor"
-        strokeWidth="1.2"
-        opacity="0.7"
-      />
-    </svg>
-  );
-}
 
 function CloseIcon() {
   return (
@@ -101,7 +84,7 @@ export default function ChatWidget() {
         >
           <span className={styles.nodeOrbit} aria-hidden="true" />
           <span className={styles.nodeCore}>
-            <NodeIcon />
+            <Image src="/brand/teambot-icon.png" alt="" width={44} height={44} className={styles.nodeIcon} priority />
           </span>
         </button>
       )}
