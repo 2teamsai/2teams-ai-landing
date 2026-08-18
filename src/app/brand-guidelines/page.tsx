@@ -319,8 +319,8 @@ export default function BrandGuidelinesPage() {
         <div className={`${styles.splitHalf} ${styles.splitDark}`}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/brand-guidelines/lockup-white.svg"
-            alt="Logo 2Teams.AI en blanco sobre fondo negro"
+            src="/brand-guidelines/lockup-color.svg"
+            alt="Logo 2Teams.AI a color sobre fondo negro"
             className={styles.splitLogo}
           />
         </div>
