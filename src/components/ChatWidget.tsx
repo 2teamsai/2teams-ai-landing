@@ -38,10 +38,10 @@ export default function ChatWidget() {
     setMessages((prev) => (prev.length === 0 ? [{ role: "model", text: t.chat.greeting }] : prev));
   }
 
-  function handleHintDodge() {
-    const x = (Math.random() - 0.5) * 90 - 20;
-    const y = (Math.random() - 0.5) * 50;
-    const rotate = (Math.random() - 0.5) * 20;
+  function handleGroupDodge() {
+    const x = (Math.random() - 0.5) * 70;
+    const y = (Math.random() - 0.5) * 70;
+    const rotate = (Math.random() - 0.5) * 14;
     setDodge({ x, y, rotate });
   }
 
@@ -84,21 +84,13 @@ export default function ChatWidget() {
   return (
     <>
       {!open && (
-        <>
-          <button
-            type="button"
-            className={styles.hint}
-            onClick={handleOpen}
-            onMouseEnter={handleHintDodge}
-            aria-hidden="true"
-            tabIndex={-1}
-          >
-            <span
-              className={styles.hintText}
-              style={{ transform: `translate(${dodge.x}px, ${dodge.y}px) rotate(${dodge.rotate}deg)` }}
-            >
-              Hello World!
-            </span>
+        <div
+          className={styles.widgetGroup}
+          onMouseEnter={handleGroupDodge}
+          style={{ transform: `translate(${dodge.x}px, ${dodge.y}px) rotate(${dodge.rotate}deg)` }}
+        >
+          <button type="button" className={styles.hint} onClick={handleOpen} aria-hidden="true" tabIndex={-1}>
+            <span className={styles.hintText}>Hello World!</span>
           </button>
           <button
             type="button"
@@ -111,7 +103,7 @@ export default function ChatWidget() {
               <Image src="/brand/teambot-icon.png" alt="" width={62} height={62} className={styles.nodeIcon} priority />
             </span>
           </button>
-        </>
+        </div>
       )}
 
       {open && (
