@@ -113,7 +113,7 @@ export default function BrandGuidelinesPage() {
       {/* PORTADA */}
       <section className={`${styles.page} ${styles.cover}`}>
         <Image
-          src="/brand-guidelines/style-server.jpg"
+          src="/brand-guidelines/style-server-cover.jpg"
           alt=""
           fill
           className={styles.coverPhoto}
@@ -619,7 +619,7 @@ export default function BrandGuidelinesPage() {
       {/* CONTRAPORTADA */}
       <section id="backcover" className={`${styles.page} ${styles.backCover}`}>
         <Image
-          src="/brand-guidelines/style-circuit.jpg"
+          src="/brand-guidelines/style-circuit-cover.jpg"
           alt=""
           fill
           className={styles.coverPhoto}
