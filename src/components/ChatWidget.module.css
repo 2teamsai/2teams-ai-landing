@@ -1,11 +1,33 @@
 .widgetGroup {
   position: fixed;
   right: 24px;
-  bottom: 24px;
+  bottom: 100px;
   z-index: 100;
   width: 0;
   height: 0;
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.widgetGroup:hover {
+  animation: shake 0.4s ease-in-out infinite;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  20% {
+    transform: translate(-3px, 1px) rotate(-3deg);
+  }
+  40% {
+    transform: translate(3px, -1px) rotate(3deg);
+  }
+  60% {
+    transform: translate(-3px, -1px) rotate(-2deg);
+  }
+  80% {
+    transform: translate(3px, 1px) rotate(2deg);
+  }
 }
 
 .node {
@@ -315,7 +337,7 @@
   }
   .widgetGroup {
     right: 16px;
-    bottom: 16px;
+    bottom: 80px;
   }
   .hint {
     right: 76px;

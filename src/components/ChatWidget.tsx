@@ -30,19 +30,11 @@ export default function ChatWidget() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [dodge, setDodge] = useState({ x: 0, y: 0, rotate: 0 });
   const scrollRef = useRef<HTMLDivElement>(null);
 
   function handleOpen() {
     setOpen(true);
     setMessages((prev) => (prev.length === 0 ? [{ role: "model", text: t.chat.greeting }] : prev));
-  }
-
-  function handleGroupDodge() {
-    const x = (Math.random() - 0.5) * 70;
-    const y = (Math.random() - 0.5) * 70;
-    const rotate = (Math.random() - 0.5) * 14;
-    setDodge({ x, y, rotate });
   }
 
   useEffect(() => {
@@ -84,11 +76,7 @@ export default function ChatWidget() {
   return (
     <>
       {!open && (
-        <div
-          className={styles.widgetGroup}
-          onMouseEnter={handleGroupDodge}
-          style={{ transform: `translate(${dodge.x}px, ${dodge.y}px) rotate(${dodge.rotate}deg)` }}
-        >
+        <div className={styles.widgetGroup}>
           <button type="button" className={styles.hint} onClick={handleOpen} aria-hidden="true" tabIndex={-1}>
             <span className={styles.hintText}>Hello World!</span>
           </button>
