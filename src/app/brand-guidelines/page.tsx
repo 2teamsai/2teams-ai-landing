@@ -42,6 +42,15 @@ function rgbToCmyk(r: number, g: number, b: number): [number, number, number, nu
   return [Math.round(c * 100), Math.round(m * 100), Math.round(y * 100), Math.round(k * 100)];
 }
 
+function ColorCircle({ swatch }: { swatch: Swatch }) {
+  return (
+    <div className={styles.colorCircleItem}>
+      <div className={styles.colorCircle} style={{ background: swatch.hex }} />
+      <span className={styles.colorHexBadge}>{swatch.hex.toUpperCase()}</span>
+    </div>
+  );
+}
+
 function ColorCard({ swatch }: { swatch: Swatch }) {
   const [r, g, b] = hexToRgb(swatch.hex);
   const [c, m, y, k] = rgbToCmyk(r, g, b);
@@ -74,422 +83,602 @@ function ColorCard({ swatch }: { swatch: Swatch }) {
   );
 }
 
+function PageStamp({ section, number }: { section: string; number: string }) {
+  return (
+    <div className={styles.pageStamp}>
+      <div className={styles.stampBrand}>
+        <div className={styles.stampLogo}>
+          <Image src="/brand-guidelines/logo-color.png" alt="" width={16} height={16} />
+          <div className={styles.wordmarkXs}>
+            <span className={styles.wmBlue}>2T</span>
+            <span className={styles.wmViolet}>eams</span>
+            <span className={styles.wmOrange}>.AI</span>
+          </div>
+        </div>
+        <span className={styles.stampTag}>Manual de Identidad Visual</span>
+      </div>
+      <div className={styles.pageFooterMeta}>
+        <strong>{section}</strong>
+        {number}
+      </div>
+    </div>
+  );
+}
+
 const today = new Date().toLocaleDateString("es-AR", { year: "numeric", month: "long" });
 
 export default function BrandGuidelinesPage() {
   return (
     <main className={styles.doc}>
-      {/* 1. PORTADA */}
+      {/* PORTADA */}
       <section className={`${styles.page} ${styles.cover}`}>
-        <div className={styles.coverBrainGlow} aria-hidden="true" />
         <Image
-          src="/brand-guidelines/logo-color.png"
+          src="/brand-guidelines/style-server.jpg"
           alt=""
-          width={140}
-          height={140}
-          className={styles.coverLogo}
+          fill
+          className={styles.coverPhoto}
           priority
         />
-        <div className={styles.coverWordmark}>
-          <span className={styles.wmBlue}>2T</span>
-          <span className={styles.wmViolet}>eams</span>
-          <span className={styles.wmOrange}>.AI</span>
-        </div>
-        <p className={styles.coverSlogan}>Soluciones Inteligentes</p>
-        <div className={styles.coverDivider} />
-        <h1 className={styles.coverTitle}>Brand Guidelines</h1>
-        <p className={styles.coverSubtitle}>Manual de marca — uso del logo, tipografía y color</p>
-        <p className={styles.coverDate}>{today}</p>
+        <div className={styles.coverOverlay} aria-hidden="true" />
+        <p className={styles.coverKicker}>Agencia de IA + Marketing</p>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/brand-guidelines/lockup-color.svg" alt="2Teams.AI" className={styles.coverLockup} />
+        <span className={styles.coverTag}>Manual de Identidad Visual</span>
+        <span className={styles.coverDate}>{today}</span>
       </section>
 
-      {/* 2. IDENTIDAD VISUAL — LOGO */}
-      <section className={styles.page}>
-        <SectionHeader kicker="Identidad visual" title="El logo" index="01" />
-        <p className={styles.lead}>
-          El logo de 2Teams.AI combina un ícono de “dos cerebros” — inteligencia artificial y
-          equipo humano trabajando como una sola mente — con el wordmark en tres colores. Nunca se
-          separan sus tres partes de color: 2T en azul, eams en violeta, .AI en naranja.
-        </p>
-
-        <div className={styles.logoShowcase}>
-          <div className={styles.logoShowcaseTile}>
-            <Image src="/brand-guidelines/logo-color.png" alt="Logo 2Teams.AI a color" width={120} height={120} />
-            <p>Ícono</p>
-          </div>
-          <div className={`${styles.logoShowcaseTile} ${styles.logoShowcaseWordmark}`}>
-            <div className={styles.wordmarkLg}>
-              <span className={styles.wmBlue}>2T</span>
-              <span className={styles.wmViolet}>eams</span>
-              <span className={styles.wmOrange}>.AI</span>
-            </div>
-            <p>Wordmark</p>
-          </div>
-        </div>
-
-        <h3 className={styles.subTitle}>Versión vertical (uso principal)</h3>
-        <div className={styles.lockupRow}>
-          <div className={styles.lockupCard}>
-            <Image src="/brand-guidelines/logo-color.png" alt="" width={44} height={44} />
-            <div className={styles.wordmarkSm}>
-              <span className={styles.wmBlue}>2T</span>
-              <span className={styles.wmViolet}>eams</span>
-              <span className={styles.wmOrange}>.AI</span>
-            </div>
-          </div>
-        </div>
-
-        <h3 className={styles.subTitle}>Versión horizontal (headers angostos, firmas)</h3>
-        <div className={styles.lockupRow}>
-          <div className={`${styles.lockupCard} ${styles.lockupHorizontal}`}>
-            <Image src="/brand-guidelines/logo-color.png" alt="" width={40} height={40} />
-            <div className={styles.wordmarkSm}>
-              <span className={styles.wmBlue}>2T</span>
-              <span className={styles.wmViolet}>eams</span>
-              <span className={styles.wmOrange}>.AI</span>
-            </div>
-          </div>
-        </div>
-
-        <h3 className={styles.subTitle}>Zona de protección y tamaño mínimo</h3>
-        <div className={styles.clearSpaceBox}>
-          <div className={styles.clearSpaceGuide}>
-            <Image src="/brand-guidelines/logo-color.png" alt="" width={80} height={80} />
-          </div>
-          <p className={styles.caption}>
-            Dejá un margen mínimo equivalente a la altura del ícono (“X”) en los cuatro lados. Ningún
-            texto, borde o elemento gráfico puede invadir esa zona.
+      {/* PERFIL DE MARCA */}
+      <section id="perfil" className={styles.page}>
+        <div className={styles.pageInner}>
+          <h2 className={styles.runningTitle}>Perfil de marca</h2>
+          <p className={styles.lead} style={{ fontSize: 17, maxWidth: 720 }}>
+            2Teams.AI es una agencia de IA + marketing digital con equipo repartido en Estados
+            Unidos, Argentina y Colombia. Unimos un equipo de ingeniería en inteligencia artificial
+            con un equipo de growth marketing bajo un mismo techo y un solo contrato, para que
+            ninguna empresa tenga que elegir entre tecnología y crecimiento. Construimos software
+            con IA integrada — no como función agregada — para automatizar operaciones, acelerar el
+            crecimiento y resolver problemas estratégicos de negocio.
           </p>
         </div>
-        <div className={styles.minSizeRow}>
-          <div className={styles.minSizeItem}>
-            <Image src="/brand-guidelines/logo-color.png" alt="" width={24} height={24} />
-            <span>24px — mínimo digital (favicon, apps)</span>
-          </div>
-          <div className={styles.minSizeItem}>
-            <Image src="/brand-guidelines/logo-color.png" alt="" width={44} height={44} />
-            <span>44px — mínimo recomendado en pantalla</span>
-          </div>
-          <div className={styles.minSizeItem}>
-            <span className={styles.mmBadge}>20mm</span>
-            <span>Mínimo en impresión (tarjetas, merchandising)</span>
-          </div>
-        </div>
-
-        <h3 className={styles.subTitle}>Versiones monocromáticas</h3>
-        <div className={styles.monoRow}>
-          <div className={`${styles.monoTile} ${styles.monoDark}`}>
-            <Image src="/brand-guidelines/logo-white.png" alt="Logo en blanco" width={90} height={90} />
-            <p>Blanco — sobre fondos oscuros o de color</p>
-          </div>
-          <div className={`${styles.monoTile} ${styles.monoLight}`}>
-            <Image src="/brand-guidelines/logo-black.png" alt="Logo en negro" width={90} height={90} />
-            <p>Negro — impresión a 1 color, fax, sellos</p>
-          </div>
-          <div className={`${styles.monoTile} ${styles.monoLight}`}>
-            <Image src="/brand-guidelines/logo-color.png" alt="Logo a color" width={90} height={90} />
-            <p>Color — uso por defecto</p>
-          </div>
-        </div>
-
-        <div className={styles.downloadNote}>
-          Archivo transparente en alta resolución:{" "}
-          <code>2Teams-AI-Logo-Transparente.png</code> (2000×2000px, fondo transparente).
-        </div>
+        <PageStamp section="Brand Profile" number="02" />
       </section>
 
-      {/* 3. TIPOGRAFÍA */}
-      <section className={styles.page}>
-        <SectionHeader kicker="Identidad visual" title="Tipografía" index="02" />
-        <p className={styles.lead}>
-          Tres familias tipográficas, cada una con un rol fijo. No se reemplazan entre sí ni se
-          agregan fuentes adicionales al sistema.
-        </p>
-
-        <div className={styles.typeSpecimen}>
-          <p className={styles.typeLabel}>Titulares — Space Grotesk (600 / 700)</p>
-          <p className={styles.typeSampleDisplay}>Aa Bb Cc 123</p>
-          <p className={styles.typeSampleDisplaySm}>2Teams.AI — Soluciones Inteligentes</p>
-          <div className={styles.typeUse}>Uso: H1, H2, títulos de tarjeta, wordmark. Tamaños: 20px – 72px.</div>
-        </div>
-
-        <div className={styles.typeSpecimen}>
-          <p className={styles.typeLabel}>Texto — Inter (400 / 500)</p>
-          <p className={styles.typeSampleBody}>
-            Automatizamos tu operación y aceleramos tu crecimiento — con IA integrada, no como
-            función agregada.
+      {/* LOGO */}
+      <section id="logo" className={styles.page}>
+        <div className={styles.pageInner}>
+          <h2 className={styles.runningTitle}>Logo</h2>
+          <p className={styles.lead}>
+            El logo de 2Teams.AI combina un ícono de “dos cerebros” — inteligencia artificial y
+            equipo humano trabajando como una sola mente — con el wordmark en tres colores. Nunca se
+            separan sus tres partes de color: 2T en azul, eams en violeta, .AI en naranja.
           </p>
-          <div className={styles.typeUse}>Uso: párrafos, botones, formularios. Tamaños: 13px – 18px.</div>
-        </div>
 
-        <div className={styles.typeSpecimen}>
-          <p className={styles.typeLabel}>Labels y datos — IBM Plex Mono (400 / 500)</p>
-          <p className={styles.typeSampleMono}>AGENCIA DE IA + MARKETING · USA · ARGENTINA · COLOMBIA</p>
-          <div className={styles.typeUse}>
-            Uso: eyebrows, kickers, badges, datos técnicos. Tamaños: 11px – 14px, uppercase, tracking amplio.
+          <div className={styles.logoShowcase}>
+            <div className={styles.logoShowcaseTile}>
+              <Image src="/brand-guidelines/logo-color.png" alt="Logo 2Teams.AI a color" width={120} height={120} />
+              <p>Ícono</p>
+            </div>
+            <div className={`${styles.logoShowcaseTile} ${styles.logoShowcaseWordmark}`}>
+              <div className={styles.wordmarkLg}>
+                <span className={styles.wmBlue}>2T</span>
+                <span className={styles.wmViolet}>eams</span>
+                <span className={styles.wmOrange}>.AI</span>
+              </div>
+              <p>Wordmark</p>
+            </div>
+          </div>
+
+          <h3 className={styles.subTitle}>Versión vertical (uso principal)</h3>
+          <div className={styles.lockupRow}>
+            <div className={styles.lockupCard}>
+              <Image src="/brand-guidelines/logo-color.png" alt="" width={44} height={44} />
+              <div className={styles.wordmarkSm}>
+                <span className={styles.wmBlue}>2T</span>
+                <span className={styles.wmViolet}>eams</span>
+                <span className={styles.wmOrange}>.AI</span>
+              </div>
+            </div>
+          </div>
+
+          <h3 className={styles.subTitle}>Versión horizontal (headers angostos, firmas)</h3>
+          <div className={styles.lockupRow}>
+            <div className={`${styles.lockupCard} ${styles.lockupHorizontal}`}>
+              <Image src="/brand-guidelines/logo-color.png" alt="" width={40} height={40} />
+              <div className={styles.wordmarkSm}>
+                <span className={styles.wmBlue}>2T</span>
+                <span className={styles.wmViolet}>eams</span>
+                <span className={styles.wmOrange}>.AI</span>
+              </div>
+            </div>
+          </div>
+
+          <h3 className={styles.subTitle}>Zona de protección y tamaño mínimo</h3>
+          <div className={styles.clearSpaceBox}>
+            <div className={styles.clearSpaceGuide}>
+              <Image src="/brand-guidelines/logo-color.png" alt="" width={80} height={80} />
+            </div>
+            <p className={styles.caption}>
+              Dejá un margen mínimo equivalente a la altura del ícono (“X”) en los cuatro lados.
+              Ningún texto, borde o elemento gráfico puede invadir esa zona.
+            </p>
+          </div>
+          <div className={styles.minSizeRow}>
+            <div className={styles.minSizeItem}>
+              <Image src="/brand-guidelines/logo-color.png" alt="" width={24} height={24} />
+              <span>24px — mínimo digital (favicon, apps)</span>
+            </div>
+            <div className={styles.minSizeItem}>
+              <Image src="/brand-guidelines/logo-color.png" alt="" width={44} height={44} />
+              <span>44px — mínimo recomendado en pantalla</span>
+            </div>
+            <div className={styles.minSizeItem}>
+              <span className={styles.mmBadge}>20mm</span>
+              <span>Mínimo en impresión (tarjetas, merchandising)</span>
+            </div>
+          </div>
+
+          <h3 className={styles.subTitle}>Versiones monocromáticas</h3>
+          <div className={styles.monoRow}>
+            <div className={`${styles.monoTile} ${styles.monoDark}`}>
+              <Image src="/brand-guidelines/logo-white.png" alt="Logo en blanco" width={90} height={90} />
+              <p>Blanco — sobre fondos oscuros o de color</p>
+            </div>
+            <div className={`${styles.monoTile} ${styles.monoLight}`}>
+              <Image src="/brand-guidelines/logo-black.png" alt="Logo en negro" width={90} height={90} />
+              <p>Negro — impresión a 1 color, fax, sellos</p>
+            </div>
+            <div className={`${styles.monoTile} ${styles.monoLight}`}>
+              <Image src="/brand-guidelines/logo-color.png" alt="Logo a color" width={90} height={90} />
+              <p>Color — uso por defecto</p>
+            </div>
           </div>
         </div>
+        <PageStamp section="Logo" number="03" />
       </section>
 
-      {/* 4. PALETA DE COLORES */}
-      <section className={styles.page}>
-        <SectionHeader kicker="Identidad visual" title="Paleta de colores" index="03" />
-        <p className={styles.lead}>
-          Tres colores de marca y una escala neutra. El azul y el violeta comunican tecnología e
-          inteligencia; el naranja aporta energía y es siempre el acento, nunca el color dominante.
-        </p>
-
-        <h3 className={styles.subTitle}>Colores de marca</h3>
-        <div className={styles.colorGrid}>
-          {BRAND_SWATCHES.map((s) => (
-            <ColorCard key={s.hex} swatch={s} />
-          ))}
+      {/* GRID DE CONSTRUCCIÓN */}
+      <section id="grid" className={styles.page}>
+        <div className={styles.pageInner}>
+          <h2 className={styles.runningTitle}>Grid de construcción</h2>
+          <p className={styles.lead}>
+            El isotipo (ícono + wordmark) se construye sobre una grilla modular de “X” unidades.
+            Usá esta proporción para escalarlo sin distorsión.
+          </p>
+          <div className={styles.gridWrap}>
+            <div className={styles.gridBox}>
+              <span className={styles.gridTickH}>
+                <span className={styles.gridTickLabel}>13 X</span>
+              </span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/brand-guidelines/lockup-black.svg"
+                alt="Grid de construcción del logo 2Teams.AI"
+                className={styles.gridIcon}
+              />
+            </div>
+          </div>
+          <div className={styles.gridLegend}>
+            <span>
+              <b>Ancho total:</b> 13 X
+            </span>
+            <span>
+              <b>Alto total:</b> ≈13 X
+            </span>
+            <span>
+              <b>Margen de seguridad:</b> 1 X en los cuatro lados
+            </span>
+          </div>
         </div>
-
-        <h3 className={styles.subTitle}>Neutros</h3>
-        <div className={styles.colorGrid}>
-          {NEUTRAL_SWATCHES.map((s) => (
-            <ColorCard key={s.hex} swatch={s} />
-          ))}
-        </div>
-
-        <p className={styles.footnote}>
-          *Los valores CMYK son una conversión aproximada para referencia. Para impresión offset,
-          pedile al taller un perfil de color (ICC) calibrado contra estos HEX/RGB.
-        </p>
+        <PageStamp section="Construction Grid" number="04" />
       </section>
 
-      {/* 6. MOCKUPS */}
-      <section className={styles.page}>
-        <SectionHeader kicker="Aplicación de marca" title="Mockups" index="04" />
-        <p className={styles.lead}>
-          El logo en contexto real: fotografía, no ilustración. La estética de marca es tecnológica
-          y fotográfica — circuitos, hardware, infraestructura real — nunca fondos planos genéricos.
-        </p>
+      {/* PALETA DE COLORES */}
+      <section id="color" className={styles.page}>
+        <div className={styles.pageInner}>
+          <h2 className={styles.runningTitle}>Color</h2>
+          <p className={styles.lead}>
+            Tres colores de marca y una escala neutra. El azul y el violeta comunican tecnología e
+            inteligencia; el naranja aporta energía y es siempre el acento, nunca el color
+            dominante.
+          </p>
 
-        <h3 className={styles.subTitle}>Estilo de imagen</h3>
-        <div className={styles.styleRow}>
-          <div className={styles.styleTile}>
-            <Image
-              src="/brand-guidelines/style-circuit.jpg"
-              alt="Placa de circuitos — estilo de imagen de marca"
-              width={400}
-              height={300}
-              className={styles.styleImg}
-            />
+          <h3 className={styles.subTitle}>Colores de marca</h3>
+          <div className={styles.colorCircleRow}>
+            {BRAND_SWATCHES.map((s) => (
+              <ColorCircle key={s.hex} swatch={s} />
+            ))}
           </div>
-          <div className={styles.styleTile}>
-            <Image
-              src="/brand-guidelines/style-server.jpg"
-              alt="Centro de datos — estilo de imagen de marca"
-              width={400}
-              height={300}
-              className={styles.styleImg}
-            />
+          <div className={styles.colorGrid}>
+            {BRAND_SWATCHES.map((s) => (
+              <ColorCard key={s.hex} swatch={s} />
+            ))}
           </div>
+
+          <h3 className={styles.subTitle}>Neutros</h3>
+          <div className={styles.colorCircleRow}>
+            {NEUTRAL_SWATCHES.map((s) => (
+              <ColorCircle key={s.hex} swatch={s} />
+            ))}
+          </div>
+          <div className={styles.colorGrid}>
+            {NEUTRAL_SWATCHES.map((s) => (
+              <ColorCard key={s.hex} swatch={s} />
+            ))}
+          </div>
+
+          <p className={styles.footnote}>
+            *Los valores CMYK son una conversión aproximada para referencia. Para impresión offset,
+            pedile al taller un perfil de color (ICC) calibrado contra estos HEX/RGB.
+          </p>
         </div>
-        <p className={styles.caption}>
-          Fotografía real de hardware, circuitos e infraestructura — nunca renders genéricos de
-          stock ni íconos planos de “IA”.
-        </p>
+        <PageStamp section="Color" number="05" />
+      </section>
 
-        <h3 className={styles.subTitle}>Camisetas</h3>
-        <div className={styles.shirtRow}>
-          <div className={styles.shirtMockup}>
-            <Image
-              src="/brand-guidelines/mockup-white-shirt.jpg"
-              alt="Remera blanca con el logo de 2Teams.AI a color"
-              width={450}
-              height={675}
-              className={styles.shirtPhoto}
-            />
-            <p className={styles.caption}>Remera blanca — logo a color, centrado</p>
-          </div>
-          <div className={styles.shirtMockup}>
-            <Image
-              src="/brand-guidelines/mockup-black-shirt.jpg"
-              alt="Remera negra con el logo de 2Teams.AI en blanco"
-              width={450}
-              height={300}
-              className={styles.shirtPhoto}
-            />
-            <p className={styles.caption}>Remera negra — logo en blanco, centrado</p>
-          </div>
-        </div>
-
-        <h3 className={styles.subTitle}>Logo en contexto</h3>
-        <div className={styles.heroMockup}>
-          <Image
-            src="/brand-guidelines/mockup-tech-bg.jpg"
-            alt="Logo de 2Teams.AI sobre una placa de circuitos"
-            width={900}
-            height={675}
-            className={styles.heroMockupImg}
+      {/* FONDO CLARO / OSCURO */}
+      <section id="split" className={styles.splitPage}>
+        <div className={`${styles.splitHalf} ${styles.splitDark}`}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/brand-guidelines/lockup-white.svg"
+            alt="Logo 2Teams.AI en blanco sobre fondo negro"
+            className={styles.splitLogo}
           />
         </div>
-        <p className={styles.caption}>Logo en blanco sobre fotografía real de hardware.</p>
+        <div className={`${styles.splitHalf} ${styles.splitLight}`}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/brand-guidelines/lockup-color.svg"
+            alt="Logo 2Teams.AI a color sobre fondo blanco"
+            className={styles.splitLogo}
+          />
+        </div>
       </section>
 
-      {/* 7 & 8. USOS CORRECTOS / INCORRECTOS */}
-      <section className={styles.page}>
-        <SectionHeader kicker="Reglas de uso" title="Usos correctos e incorrectos" index="05" />
+      {/* TIPOGRAFÍA */}
+      <section id="fonts" className={styles.page}>
+        <div className={styles.pageInner}>
+          <h2 className={styles.runningTitle}>Tipografía</h2>
+          <p className={styles.lead}>
+            Tres familias tipográficas, cada una con un rol fijo. No se reemplazan entre sí ni se
+            agregan fuentes adicionales al sistema.
+          </p>
 
-        <h3 className={`${styles.subTitle} ${styles.okTitle}`}>✅ Correcto</h3>
-        <div className={styles.usageGrid}>
-          <div className={`${styles.usageTile} ${styles.usageOk}`}>
-            <div className={styles.miniLight}>
-              <Image src="/brand-guidelines/logo-color.png" alt="" width={48} height={48} />
-            </div>
-            <p>Logo a color sobre fondo claro</p>
+          <div className={styles.fontBlock}>
+            <p className={styles.fontRole}>Titulares</p>
+            <p className={styles.fontName}>Space Grotesk</p>
+            <p className={styles.fontGlyphs} style={{ fontFamily: "var(--font-display)", fontWeight: 700 }}>
+              AaBbCcDdEeFfGgHhIiJj
+              <br />
+              KkLlMmNnOoPpQqRrSs
+              <br />
+              TtUuVvWwXxYyZz
+              <br />
+              0123456789 &amp;@$%!°
+            </p>
+            <div className={styles.typeUse}>Uso: H1, H2, títulos de tarjeta, wordmark. Tamaños: 20px – 72px.</div>
           </div>
-          <div className={`${styles.usageTile} ${styles.usageOk}`}>
-            <div className={styles.miniDark}>
-              <Image src="/brand-guidelines/logo-color.png" alt="" width={48} height={48} />
-            </div>
-            <p>Logo a color sobre fondo oscuro</p>
+
+          <div className={styles.fontBlock}>
+            <p className={styles.fontRole}>Texto</p>
+            <p className={styles.fontName}>Inter</p>
+            <p className={styles.fontGlyphs} style={{ fontFamily: "var(--font-body)", fontWeight: 400, fontSize: 18 }}>
+              AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz
+              <br />
+              0123456789 &amp;@$%{"{"}{"}"} !*°&rdquo;;.
+            </p>
+            <div className={styles.typeUse}>Uso: párrafos, botones, formularios. Tamaños: 13px – 18px.</div>
           </div>
-          <div className={`${styles.usageTile} ${styles.usageOk}`}>
-            <div className={styles.miniDark} style={{ padding: 32 }}>
-              <Image src="/brand-guidelines/logo-color.png" alt="" width={40} height={40} />
+
+          <div className={styles.fontBlock}>
+            <p className={styles.fontRole}>Labels y datos</p>
+            <p className={styles.fontName}>IBM Plex Mono</p>
+            <p className={styles.fontGlyphs} style={{ fontFamily: "var(--font-mono)", fontWeight: 500, fontSize: 16 }}>
+              AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz
+              <br />
+              0123456789 &amp;@$%!°
+            </p>
+            <div className={styles.typeUse}>
+              Uso: eyebrows, kickers, badges, datos técnicos. Tamaños: 11px – 14px, uppercase, tracking
+              amplio.
             </div>
-            <p>Con espacio de protección respetado</p>
           </div>
-          <div className={`${styles.usageTile} ${styles.usageOk}`}>
-            <div className={styles.miniDark}>
-              <div className={styles.miniLockup}>
-                <Image src="/brand-guidelines/logo-color.png" alt="" width={36} height={36} />
-                <span className={styles.miniSlogan}>Soluciones Inteligentes</span>
+        </div>
+        <PageStamp section="Fonts" number="06" />
+      </section>
+
+      {/* MOCKUPS — ESTILO FOTOGRÁFICO */}
+      <section id="mockups" className={styles.page}>
+        <div className={styles.pageInner}>
+          <h2 className={styles.runningTitle}>Mockups</h2>
+          <p className={styles.lead}>
+            El logo en contexto real: fotografía, no ilustración. La estética de marca es
+            tecnológica y fotográfica — circuitos, hardware, infraestructura real — nunca fondos
+            planos genéricos.
+          </p>
+
+          <h3 className={styles.subTitle}>Estilo de imagen</h3>
+          <div className={styles.styleRow}>
+            <div className={styles.styleTile}>
+              <Image
+                src="/brand-guidelines/style-circuit.jpg"
+                alt="Placa de circuitos — estilo de imagen de marca"
+                width={400}
+                height={300}
+                className={styles.styleImg}
+              />
+            </div>
+            <div className={styles.styleTile}>
+              <Image
+                src="/brand-guidelines/style-server.jpg"
+                alt="Centro de datos — estilo de imagen de marca"
+                width={400}
+                height={300}
+                className={styles.styleImg}
+              />
+            </div>
+          </div>
+          <p className={styles.caption}>
+            Fotografía real de hardware, circuitos e infraestructura — nunca renders genéricos de
+            stock ni íconos planos de “IA”.
+          </p>
+
+          <h3 className={styles.subTitle}>Logo en contexto</h3>
+          <div className={styles.heroMockup}>
+            <Image
+              src="/brand-guidelines/mockup-tech-bg.jpg"
+              alt="Logo de 2Teams.AI sobre una placa de circuitos"
+              width={900}
+              height={675}
+              className={styles.heroMockupImg}
+            />
+          </div>
+          <p className={styles.caption}>Logo en blanco sobre fotografía real de hardware.</p>
+        </div>
+        <PageStamp section="Mockups" number="07" />
+      </section>
+
+      {/* POP — REMERAS Y POLOS */}
+      <section id="pop" className={styles.page}>
+        <div className={styles.pageInner}>
+          <h2 className={styles.runningTitle}>POP — Indumentaria</h2>
+          <p className={styles.lead}>
+            Frente: solo el ícono, 2×2 in, a un costado del pecho. Espalda: el isotipo completo con
+            el nombre, grande y centrado.
+          </p>
+
+          <h3 className={styles.subTitle}>Camisetas</h3>
+          <div className={styles.shirtRow}>
+            <div className={styles.shirtMockup}>
+              <Image
+                src="/brand-guidelines/mockup-white-shirt-front.jpg"
+                alt="Remera blanca, frente — ícono a color de 2Teams.AI al costado del pecho, 2x2 pulgadas"
+                width={765}
+                height={980}
+                className={styles.shirtPhoto}
+              />
+              <p className={styles.caption}>Remera blanca — frente, ícono 2×2in al costado del pecho</p>
+            </div>
+            <div className={styles.shirtMockup}>
+              <Image
+                src="/brand-guidelines/mockup-white-shirt-back.jpg"
+                alt="Remera blanca, espalda — logo de 2Teams.AI a color con el nombre, grande y centrado"
+                width={766}
+                height={980}
+                className={styles.shirtPhoto}
+              />
+              <p className={styles.caption}>Remera blanca — espalda, logo completo grande y centrado</p>
+            </div>
+            <div className={styles.shirtMockup}>
+              <Image
+                src="/brand-guidelines/mockup-black-shirt-front.jpg"
+                alt="Remera negra, frente — ícono en blanco de 2Teams.AI al costado del pecho, 2x2 pulgadas"
+                width={583}
+                height={700}
+                className={styles.shirtPhoto}
+              />
+              <p className={styles.caption}>Remera negra — frente, ícono 2×2in al costado del pecho</p>
+            </div>
+            <div className={styles.shirtMockup}>
+              <Image
+                src="/brand-guidelines/mockup-black-shirt-back.jpg"
+                alt="Remera negra, espalda — logo de 2Teams.AI en blanco con el nombre, grande y centrado"
+                width={584}
+                height={700}
+                className={styles.shirtPhoto}
+              />
+              <p className={styles.caption}>Remera negra — espalda, logo completo grande y centrado</p>
+            </div>
+          </div>
+
+          <h3 className={styles.subTitle}>Polos</h3>
+          <div className={styles.shirtRow}>
+            <div className={styles.shirtMockup}>
+              <Image
+                src="/brand-guidelines/mockup-white-polo.jpg"
+                alt="Polo blanco con el logo de 2Teams.AI a color"
+                width={669}
+                height={705}
+                className={styles.shirtPhoto}
+              />
+              <p className={styles.caption}>Polo blanco — logo a color, centrado</p>
+            </div>
+            <div className={styles.shirtMockup}>
+              <Image
+                src="/brand-guidelines/mockup-black-polo.jpg"
+                alt="Polo negro con el logo de 2Teams.AI en blanco"
+                width={669}
+                height={705}
+                className={styles.shirtPhoto}
+              />
+              <p className={styles.caption}>Polo negro — logo en blanco, centrado</p>
+            </div>
+          </div>
+        </div>
+        <PageStamp section="POP" number="08" />
+      </section>
+
+      {/* USOS CORRECTOS / INCORRECTOS */}
+      <section id="usos" className={styles.page}>
+        <div className={styles.pageInner}>
+          <h2 className={styles.runningTitle}>Usos correctos e incorrectos</h2>
+
+          <h3 className={`${styles.subTitle} ${styles.okTitle}`}>✅ Correcto</h3>
+          <div className={styles.usageGrid}>
+            <div className={`${styles.usageTile} ${styles.usageOk}`}>
+              <div className={styles.miniLight}>
+                <Image src="/brand-guidelines/logo-color.png" alt="" width={48} height={48} />
               </div>
+              <p>Logo a color sobre fondo claro</p>
             </div>
-            <p>Con el eslogan integrado debajo</p>
-          </div>
-        </div>
-
-        <h3 className={`${styles.subTitle} ${styles.badTitle}`}>❌ Incorrecto</h3>
-        <div className={styles.usageGrid}>
-          <div className={`${styles.usageTile} ${styles.usageBad}`}>
-            <div className={styles.miniLight}>
-              <Image
-                src="/brand-guidelines/logo-color.png"
-                alt=""
-                width={70}
-                height={40}
-                style={{ objectFit: "fill" }}
-              />
+            <div className={`${styles.usageTile} ${styles.usageOk}`}>
+              <div className={styles.miniDark}>
+                <Image src="/brand-guidelines/logo-color.png" alt="" width={48} height={48} />
+              </div>
+              <p>Logo a color sobre fondo oscuro</p>
             </div>
-            <p>Logo distorsionado / estirado</p>
-          </div>
-          <div className={`${styles.usageTile} ${styles.usageBad}`}>
-            <div className={styles.miniDark} style={{ padding: 2 }}>
-              <Image src="/brand-guidelines/logo-color.png" alt="" width={70} height={70} />
-              <span className={styles.crowdText}>texto pegado al logo</span>
+            <div className={`${styles.usageTile} ${styles.usageOk}`}>
+              <div className={styles.miniDark} style={{ padding: 32 }}>
+                <Image src="/brand-guidelines/logo-color.png" alt="" width={40} height={40} />
+              </div>
+              <p>Con espacio de protección respetado</p>
             </div>
-            <p>Sin espacio de protección</p>
-          </div>
-          <div className={`${styles.usageTile} ${styles.usageBad}`}>
-            <div className={styles.miniLowContrast}>
-              <Image src="/brand-guidelines/logo-white.png" alt="" width={48} height={48} />
-            </div>
-            <p>Sobre un fondo sin contraste suficiente</p>
-          </div>
-          <div className={`${styles.usageTile} ${styles.usageBad}`}>
-            <div className={styles.miniLight}>
-              <Image
-                src="/brand-guidelines/logo-black.png"
-                alt=""
-                width={48}
-                height={48}
-                style={{ filter: "hue-rotate(90deg) saturate(4)" }}
-              />
-            </div>
-            <p>Con colores fuera de la paleta de marca</p>
-          </div>
-        </div>
-      </section>
-
-      {/* 8. APLICACIONES */}
-      <section className={styles.page}>
-        <SectionHeader kicker="Aplicación de marca" title="Aplicaciones" index="06" />
-
-        <div className={styles.appGrid}>
-          <div className={styles.appCard}>
-            <p className={styles.appLabel}>Tarjeta de negocio</p>
-            <div className={styles.bizCard}>
-              <div className={styles.bizCardLogo}>
-                <Image src="/brand-guidelines/logo-color.png" alt="" width={28} height={28} />
-                <div className={styles.wordmarkXs}>
-                  <span className={styles.wmBlue}>2T</span>
-                  <span className={styles.wmViolet}>eams</span>
-                  <span className={styles.wmOrange}>.AI</span>
+            <div className={`${styles.usageTile} ${styles.usageOk}`}>
+              <div className={styles.miniDark}>
+                <div className={styles.miniLockup}>
+                  <Image src="/brand-guidelines/logo-color.png" alt="" width={36} height={36} />
+                  <span className={styles.miniSlogan}>Soluciones Inteligentes</span>
                 </div>
               </div>
-              <div className={styles.bizCardInfo}>
-                <p className={styles.bizCardName}>Nombre Apellido</p>
-                <p className={styles.bizCardRole}>Cargo</p>
-              </div>
+              <p>Con el eslogan integrado debajo</p>
             </div>
           </div>
 
-          <div className={styles.appCard}>
-            <p className={styles.appLabel}>Firma de email</p>
-            <div className={styles.emailSig}>
-              <Image src="/brand-guidelines/logo-color.png" alt="" width={36} height={36} />
-              <div>
-                <p className={styles.sigName}>Nombre Apellido</p>
-                <p className={styles.sigRole}>Cargo — 2Teams.AI</p>
-                <p className={styles.sigContact}>helloworld@2teams-ai.com · 2teams-ai.com</p>
+          <h3 className={`${styles.subTitle} ${styles.badTitle}`}>❌ Incorrecto</h3>
+          <div className={styles.usageGrid}>
+            <div className={`${styles.usageTile} ${styles.usageBad}`}>
+              <div className={styles.miniLight}>
+                <Image
+                  src="/brand-guidelines/logo-color.png"
+                  alt=""
+                  width={70}
+                  height={40}
+                  style={{ objectFit: "fill" }}
+                />
               </div>
+              <p>Logo distorsionado / estirado</p>
             </div>
-          </div>
-
-          <div className={styles.appCard}>
-            <p className={styles.appLabel}>Perfil de redes sociales</p>
-            <div className={styles.socialPreview}>
-              <div className={styles.socialAvatar}>
-                <Image src="/brand-guidelines/logo-white.png" alt="" width={44} height={44} />
+            <div className={`${styles.usageTile} ${styles.usageBad}`}>
+              <div className={styles.miniDark} style={{ padding: 2 }}>
+                <Image src="/brand-guidelines/logo-color.png" alt="" width={70} height={70} />
+                <span className={styles.crowdText}>texto pegado al logo</span>
               </div>
-              <div>
-                <p className={styles.sigName}>2Teams.AI</p>
-                <p className={styles.sigRole}>@2teamsai</p>
-              </div>
+              <p>Sin espacio de protección</p>
             </div>
-          </div>
-
-          <div className={styles.appCard}>
-            <p className={styles.appLabel}>Favicon</p>
-            <div className={styles.browserMock}>
-              <div className={styles.browserTab}>
-                <Image src="/brand-guidelines/logo-color.png" alt="" width={14} height={14} />
-                <span>2Teams.AI</span>
+            <div className={`${styles.usageTile} ${styles.usageBad}`}>
+              <div className={styles.miniLowContrast}>
+                <Image src="/brand-guidelines/logo-white.png" alt="" width={48} height={48} />
               </div>
-              <div className={styles.browserBody} />
+              <p>Sobre un fondo sin contraste suficiente</p>
+            </div>
+            <div className={`${styles.usageTile} ${styles.usageBad}`}>
+              <div className={styles.miniLight}>
+                <Image
+                  src="/brand-guidelines/logo-black.png"
+                  alt=""
+                  width={48}
+                  height={48}
+                  style={{ filter: "hue-rotate(90deg) saturate(4)" }}
+                />
+              </div>
+              <p>Con colores fuera de la paleta de marca</p>
             </div>
           </div>
         </div>
+        <PageStamp section="Usos" number="09" />
+      </section>
+
+      {/* POP — APLICACIONES DIGITALES */}
+      <section id="digital" className={styles.page}>
+        <div className={styles.pageInner}>
+          <h2 className={styles.runningTitle}>POP — Aplicaciones digitales</h2>
+          <p className={styles.lead}>
+            2Teams.AI es una empresa de software: sus aplicaciones de marca viven en pantalla, no en
+            flotas de vehículos.
+          </p>
+
+          <div className={styles.appGrid}>
+            <div className={styles.appCard}>
+              <p className={styles.appLabel}>Tarjeta de negocio</p>
+              <div className={styles.bizCard}>
+                <div className={styles.bizCardLogo}>
+                  <Image src="/brand-guidelines/logo-color.png" alt="" width={28} height={28} />
+                  <div className={styles.wordmarkXs}>
+                    <span className={styles.wmBlue}>2T</span>
+                    <span className={styles.wmViolet}>eams</span>
+                    <span className={styles.wmOrange}>.AI</span>
+                  </div>
+                </div>
+                <div className={styles.bizCardInfo}>
+                  <p className={styles.bizCardName}>Nombre Apellido</p>
+                  <p className={styles.bizCardRole}>Cargo</p>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.appCard}>
+              <p className={styles.appLabel}>Firma de email</p>
+              <div className={styles.emailSig}>
+                <Image src="/brand-guidelines/logo-color.png" alt="" width={36} height={36} />
+                <div>
+                  <p className={styles.sigName}>Nombre Apellido</p>
+                  <p className={styles.sigRole}>Cargo — 2Teams.AI</p>
+                  <p className={styles.sigContact}>helloworld@2teams-ai.com · 2teams-ai.com</p>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.appCard}>
+              <p className={styles.appLabel}>Perfil de redes sociales</p>
+              <div className={styles.socialPreview}>
+                <div className={styles.socialAvatar}>
+                  <Image src="/brand-guidelines/logo-white.png" alt="" width={44} height={44} />
+                </div>
+                <div>
+                  <p className={styles.sigName}>2Teams.AI</p>
+                  <p className={styles.sigRole}>@2teamsai</p>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.appCard}>
+              <p className={styles.appLabel}>Favicon / app icon</p>
+              <div className={styles.browserMock}>
+                <div className={styles.browserTab}>
+                  <Image src="/brand-guidelines/logo-color.png" alt="" width={14} height={14} />
+                  <span>2Teams.AI</span>
+                </div>
+                <div className={styles.browserBody} />
+              </div>
+            </div>
+          </div>
+        </div>
+        <PageStamp section="Digital" number="10" />
       </section>
 
       {/* CONTRAPORTADA */}
-      <section className={`${styles.page} ${styles.backCover}`}>
-        <Image src="/brand-guidelines/logo-color.png" alt="" width={64} height={64} />
-        <p className={styles.backWordmark}>
-          <span className={styles.wmBlue}>2T</span>
-          <span className={styles.wmViolet}>eams</span>
-          <span className={styles.wmOrange}>.AI</span>
-        </p>
+      <section id="backcover" className={`${styles.page} ${styles.backCover}`}>
+        <Image
+          src="/brand-guidelines/style-circuit.jpg"
+          alt=""
+          fill
+          className={styles.coverPhoto}
+        />
+        <div className={styles.coverOverlay} aria-hidden="true" />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/brand-guidelines/lockup-color.svg" alt="2Teams.AI" className={styles.backLogo} />
         <p className={styles.backTagline}>Soluciones Inteligentes</p>
         <p className={styles.backContact}>helloworld@2teams-ai.com · 2teams-ai.com</p>
       </section>
     </main>
-  );
-}
-
-function SectionHeader({ kicker, title, index }: { kicker: string; title: string; index: string }) {
-  return (
-    <div className={styles.sectionHeader}>
-      <span className={styles.sectionIndex}>{index}</span>
-      <div>
-        <p className={styles.kicker}>{kicker}</p>
-        <h2 className={styles.sectionTitle}>{title}</h2>
-      </div>
-    </div>
   );
 }
