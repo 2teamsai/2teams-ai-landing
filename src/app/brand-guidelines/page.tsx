@@ -386,64 +386,14 @@ export default function BrandGuidelinesPage() {
         <PageStamp section="Fonts" number="06" />
       </section>
 
-      {/* MOCKUPS — ESTILO FOTOGRÁFICO */}
-      <section id="mockups" className={styles.page}>
-        <div className={styles.pageInner}>
-          <h2 className={styles.runningTitle}>Mockups</h2>
-          <p className={styles.lead}>
-            El logo en contexto real: fotografía, no ilustración. La estética de marca es
-            tecnológica y fotográfica — circuitos, hardware, infraestructura real — nunca fondos
-            planos genéricos.
-          </p>
-
-          <h3 className={styles.subTitle}>Estilo de imagen</h3>
-          <div className={styles.styleRow}>
-            <div className={styles.styleTile}>
-              <Image
-                src="/brand-guidelines/style-circuit.jpg"
-                alt="Placa de circuitos — estilo de imagen de marca"
-                width={400}
-                height={300}
-                className={styles.styleImg}
-              />
-            </div>
-            <div className={styles.styleTile}>
-              <Image
-                src="/brand-guidelines/style-server.jpg"
-                alt="Centro de datos — estilo de imagen de marca"
-                width={400}
-                height={300}
-                className={styles.styleImg}
-              />
-            </div>
-          </div>
-          <p className={styles.caption}>
-            Fotografía real de hardware, circuitos e infraestructura — nunca renders genéricos de
-            stock ni íconos planos de “IA”.
-          </p>
-
-          <h3 className={styles.subTitle}>Logo en contexto</h3>
-          <div className={styles.heroMockup}>
-            <Image
-              src="/brand-guidelines/mockup-tech-bg.jpg"
-              alt="Logo de 2Teams.AI sobre una placa de circuitos"
-              width={900}
-              height={675}
-              className={styles.heroMockupImg}
-            />
-          </div>
-          <p className={styles.caption}>Logo en blanco sobre fotografía real de hardware.</p>
-        </div>
-        <PageStamp section="Mockups" number="07" />
-      </section>
-
       {/* POP — REMERAS Y POLOS */}
       <section id="pop" className={styles.page}>
         <div className={styles.pageInner}>
           <h2 className={styles.runningTitle}>POP — Indumentaria</h2>
           <p className={styles.lead}>
-            Frente: solo el ícono, 2×2 in, a un costado del pecho. Espalda: el isotipo completo con
-            el nombre, grande y centrado.
+            Para impresión, el logo siempre va acompañado del wordmark — nunca solo el ícono.
+            Frente: isotipo completo (ícono + wordmark), 2×2 in, a un costado del pecho. Espalda:
+            isotipo completo, grande, centrado en el medio de la espalda.
           </p>
 
           <h3 className={styles.subTitle}>Camisetas</h3>
@@ -451,42 +401,42 @@ export default function BrandGuidelinesPage() {
             <div className={styles.shirtMockup}>
               <Image
                 src="/brand-guidelines/mockup-white-shirt-front.jpg"
-                alt="Remera blanca, frente — ícono a color de 2Teams.AI al costado del pecho, 2x2 pulgadas"
+                alt="Remera blanca, frente — ícono y wordmark de 2Teams.AI al costado del pecho, 2x2 pulgadas"
                 width={765}
                 height={980}
                 className={styles.shirtPhoto}
               />
-              <p className={styles.caption}>Remera blanca — frente, ícono 2×2in al costado del pecho</p>
+              <p className={styles.caption}>Remera blanca — frente, isotipo 2×2in al costado del pecho</p>
             </div>
             <div className={styles.shirtMockup}>
               <Image
                 src="/brand-guidelines/mockup-white-shirt-back.jpg"
-                alt="Remera blanca, espalda — logo de 2Teams.AI a color con el nombre, grande y centrado"
+                alt="Remera blanca, espalda — isotipo de 2Teams.AI a color con el nombre, grande y centrado en el medio de la espalda"
                 width={766}
                 height={980}
                 className={styles.shirtPhoto}
               />
-              <p className={styles.caption}>Remera blanca — espalda, logo completo grande y centrado</p>
+              <p className={styles.caption}>Remera blanca — espalda, isotipo grande centrado en el medio</p>
             </div>
             <div className={styles.shirtMockup}>
               <Image
                 src="/brand-guidelines/mockup-black-shirt-front.jpg"
-                alt="Remera negra, frente — ícono en blanco de 2Teams.AI al costado del pecho, 2x2 pulgadas"
+                alt="Remera negra, frente — ícono y wordmark en blanco de 2Teams.AI al costado del pecho, 2x2 pulgadas"
                 width={583}
                 height={700}
                 className={styles.shirtPhoto}
               />
-              <p className={styles.caption}>Remera negra — frente, ícono 2×2in al costado del pecho</p>
+              <p className={styles.caption}>Remera negra — frente, isotipo 2×2in al costado del pecho</p>
             </div>
             <div className={styles.shirtMockup}>
               <Image
                 src="/brand-guidelines/mockup-black-shirt-back.jpg"
-                alt="Remera negra, espalda — logo de 2Teams.AI en blanco con el nombre, grande y centrado"
+                alt="Remera negra, espalda — isotipo de 2Teams.AI en blanco con el nombre, grande y centrado en el medio de la espalda"
                 width={584}
                 height={700}
                 className={styles.shirtPhoto}
               />
-              <p className={styles.caption}>Remera negra — espalda, logo completo grande y centrado</p>
+              <p className={styles.caption}>Remera negra — espalda, isotipo grande centrado en el medio</p>
             </div>
           </div>
 
@@ -495,26 +445,26 @@ export default function BrandGuidelinesPage() {
             <div className={styles.shirtMockup}>
               <Image
                 src="/brand-guidelines/mockup-white-polo.jpg"
-                alt="Polo blanco con el logo de 2Teams.AI a color"
+                alt="Polo blanco con el ícono y wordmark de 2Teams.AI a color"
                 width={669}
                 height={705}
                 className={styles.shirtPhoto}
               />
-              <p className={styles.caption}>Polo blanco — logo a color, centrado</p>
+              <p className={styles.caption}>Polo blanco — isotipo a color, centrado</p>
             </div>
             <div className={styles.shirtMockup}>
               <Image
                 src="/brand-guidelines/mockup-black-polo.jpg"
-                alt="Polo negro con el logo de 2Teams.AI en blanco"
+                alt="Polo negro con el ícono y wordmark de 2Teams.AI en blanco"
                 width={669}
                 height={705}
                 className={styles.shirtPhoto}
               />
-              <p className={styles.caption}>Polo negro — logo en blanco, centrado</p>
+              <p className={styles.caption}>Polo negro — isotipo en blanco, centrado</p>
             </div>
           </div>
         </div>
-        <PageStamp section="POP" number="08" />
+        <PageStamp section="POP" number="07" />
       </section>
 
       {/* USOS CORRECTOS / INCORRECTOS */}
@@ -594,7 +544,7 @@ export default function BrandGuidelinesPage() {
             </div>
           </div>
         </div>
-        <PageStamp section="Usos" number="09" />
+        <PageStamp section="Usos" number="08" />
       </section>
 
       {/* POP — APLICACIONES DIGITALES */}
@@ -662,7 +612,7 @@ export default function BrandGuidelinesPage() {
             </div>
           </div>
         </div>
-        <PageStamp section="Digital" number="10" />
+        <PageStamp section="Digital" number="09" />
       </section>
 
       {/* CONTRAPORTADA */}
