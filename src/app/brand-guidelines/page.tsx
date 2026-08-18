@@ -262,34 +262,71 @@ export default function BrandGuidelinesPage() {
       <section className={styles.page}>
         <SectionHeader kicker="Aplicación de marca" title="Mockups" index="04" />
         <p className={styles.lead}>
-          Ilustraciones de referencia para ver el logo en contexto. Para producción real (impresión
-          textil, merchandising), usar el archivo transparente en alta resolución.
+          El logo en contexto real: fotografía, no ilustración. La estética de marca es tecnológica
+          y fotográfica — circuitos, hardware, infraestructura real — nunca fondos planos genéricos.
         </p>
 
-        <h3 className={styles.subTitle}>Camisetas polo</h3>
+        <h3 className={styles.subTitle}>Estilo de imagen</h3>
+        <div className={styles.styleRow}>
+          <div className={styles.styleTile}>
+            <Image
+              src="/brand-guidelines/style-circuit.jpg"
+              alt="Placa de circuitos — estilo de imagen de marca"
+              width={400}
+              height={300}
+              className={styles.styleImg}
+            />
+          </div>
+          <div className={styles.styleTile}>
+            <Image
+              src="/brand-guidelines/style-server.jpg"
+              alt="Centro de datos — estilo de imagen de marca"
+              width={400}
+              height={300}
+              className={styles.styleImg}
+            />
+          </div>
+        </div>
+        <p className={styles.caption}>
+          Fotografía real de hardware, circuitos e infraestructura — nunca renders genéricos de
+          stock ni íconos planos de “IA”.
+        </p>
+
+        <h3 className={styles.subTitle}>Camisetas</h3>
         <div className={styles.shirtRow}>
           <div className={styles.shirtMockup}>
-            <PoloShirt color="#f3f4f8" logoSrc="/brand-guidelines/logo-color.png" />
-            <p className={styles.caption}>Polo blanca — logo a color, pecho izquierdo (~6cm)</p>
+            <Image
+              src="/brand-guidelines/mockup-white-shirt.jpg"
+              alt="Remera blanca con el logo de 2Teams.AI a color"
+              width={450}
+              height={675}
+              className={styles.shirtPhoto}
+            />
+            <p className={styles.caption}>Remera blanca — logo a color, centrado</p>
           </div>
           <div className={styles.shirtMockup}>
-            <PoloShirt color="#0f1320" logoSrc="/brand-guidelines/logo-white.png" />
-            <p className={styles.caption}>Polo negra — logo en blanco, pecho izquierdo (~6cm)</p>
+            <Image
+              src="/brand-guidelines/mockup-black-shirt.jpg"
+              alt="Remera negra con el logo de 2Teams.AI en blanco"
+              width={450}
+              height={300}
+              className={styles.shirtPhoto}
+            />
+            <p className={styles.caption}>Remera negra — logo en blanco, centrado</p>
           </div>
         </div>
 
-        <h3 className={styles.subTitle}>Fondos</h3>
-        <div className={styles.bgRow}>
-          <div className={`${styles.bgTile} ${styles.bgWhite}`}>
-            <Image src="/brand-guidelines/logo-color.png" alt="" width={64} height={64} />
-          </div>
-          <div className={`${styles.bgTile} ${styles.bgBlack}`}>
-            <Image src="/brand-guidelines/logo-white.png" alt="" width={64} height={64} />
-          </div>
-          <div className={`${styles.bgTile} ${styles.bgGradient}`}>
-            <Image src="/brand-guidelines/logo-white.png" alt="" width={64} height={64} />
-          </div>
+        <h3 className={styles.subTitle}>Logo en contexto</h3>
+        <div className={styles.heroMockup}>
+          <Image
+            src="/brand-guidelines/mockup-tech-bg.jpg"
+            alt="Logo de 2Teams.AI sobre una placa de circuitos"
+            width={900}
+            height={675}
+            className={styles.heroMockupImg}
+          />
         </div>
+        <p className={styles.caption}>Logo en blanco sobre fotografía real de hardware.</p>
       </section>
 
       {/* 7 & 8. USOS CORRECTOS / INCORRECTOS */}
@@ -454,20 +491,5 @@ function SectionHeader({ kicker, title, index }: { kicker: string; title: string
         <h2 className={styles.sectionTitle}>{title}</h2>
       </div>
     </div>
-  );
-}
-
-function PoloShirt({ color, logoSrc }: { color: string; logoSrc: string }) {
-  return (
-    <svg viewBox="0 0 200 220" width="180" height="198" className={styles.shirtSvg}>
-      <path
-        d="M60 10 L80 0 L100 18 L120 0 L140 10 L170 40 L150 65 L135 55 L135 210 L65 210 L65 55 L50 65 L30 40 Z"
-        fill={color}
-        stroke="rgba(0,0,0,0.12)"
-        strokeWidth="2"
-      />
-      <path d="M85 8 Q100 26 115 8" fill="none" stroke="rgba(0,0,0,0.15)" strokeWidth="2" />
-      <image href={logoSrc} x="76" y="55" width="22" height="22" />
-    </svg>
   );
 }

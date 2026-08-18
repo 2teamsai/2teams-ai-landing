@@ -454,6 +454,26 @@
 
 /* ---------- Mockups ---------- */
 
+.styleRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.styleTile {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+}
+
+.styleImg {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
 .shirtRow {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -468,39 +488,27 @@
   background: var(--paper-elev);
   border: 1px solid var(--rule);
   border-radius: 16px;
-  padding: 28px;
+  padding: 16px;
   text-align: center;
 }
 
-.shirtSvg {
-  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.08));
+.shirtPhoto {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
-.bgRow {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-
-.bgTile {
-  height: 140px;
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.heroMockup {
+  border-radius: 16px;
+  overflow: hidden;
   border: 1px solid var(--rule);
 }
 
-.bgWhite {
-  background: #ffffff;
-}
-
-.bgBlack {
-  background: #05060a;
-}
-
-.bgGradient {
-  background: linear-gradient(135deg, #4c6fff, #6c5ce7);
+.heroMockupImg {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* ---------- Usage grid ---------- */
@@ -749,7 +757,7 @@
   .logoShowcase,
   .monoRow,
   .shirtRow,
-  .bgRow,
+  .styleRow,
   .appGrid {
     grid-template-columns: 1fr;
   }
@@ -781,8 +789,6 @@
   .colorCard,
   .usageTile,
   .monoDark,
-  .bgBlack,
-  .bgGradient,
   .miniDark,
   .miniLowContrast,
   .socialAvatar {
