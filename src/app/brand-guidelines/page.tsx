@@ -391,9 +391,10 @@ export default function BrandGuidelinesPage() {
         <div className={styles.pageInner}>
           <h2 className={styles.runningTitle}>POP — Indumentaria</h2>
           <p className={styles.lead}>
-            Para impresión, el logo siempre va acompañado del wordmark — nunca solo el ícono.
-            Frente: isotipo completo (ícono + wordmark), 2×2 in, a un costado del pecho. Espalda:
-            isotipo completo, grande, centrado en el medio de la espalda.
+            Para impresión, el logo siempre va en color y acompañado del wordmark — nunca solo el
+            ícono, nunca en blanco/negro, sin importar el color de la prenda. Frente: isotipo
+            completo, 2×2 in, sobre el lado derecho del pecho. Espalda: isotipo completo, grande,
+            centrado en el medio de la espalda.
           </p>
 
           <h3 className={styles.subTitle}>Camisetas</h3>
@@ -401,12 +402,12 @@ export default function BrandGuidelinesPage() {
             <div className={styles.shirtMockup}>
               <Image
                 src="/brand-guidelines/mockup-white-shirt-front.jpg"
-                alt="Remera blanca, frente — ícono y wordmark de 2Teams.AI al costado del pecho, 2x2 pulgadas"
+                alt="Remera blanca, frente — isotipo a color de 2Teams.AI sobre el lado derecho del pecho, 2x2 pulgadas"
                 width={765}
                 height={980}
                 className={styles.shirtPhoto}
               />
-              <p className={styles.caption}>Remera blanca — frente, isotipo 2×2in al costado del pecho</p>
+              <p className={styles.caption}>Remera blanca — frente, isotipo a color 2×2in, lado derecho del pecho</p>
             </div>
             <div className={styles.shirtMockup}>
               <Image
@@ -416,27 +417,27 @@ export default function BrandGuidelinesPage() {
                 height={980}
                 className={styles.shirtPhoto}
               />
-              <p className={styles.caption}>Remera blanca — espalda, isotipo grande centrado en el medio</p>
+              <p className={styles.caption}>Remera blanca — espalda, isotipo a color, grande, centrado en el medio</p>
             </div>
             <div className={styles.shirtMockup}>
               <Image
                 src="/brand-guidelines/mockup-black-shirt-front.jpg"
-                alt="Remera negra, frente — ícono y wordmark en blanco de 2Teams.AI al costado del pecho, 2x2 pulgadas"
+                alt="Remera negra, frente — isotipo a color de 2Teams.AI sobre el lado derecho del pecho, 2x2 pulgadas"
                 width={583}
                 height={700}
                 className={styles.shirtPhoto}
               />
-              <p className={styles.caption}>Remera negra — frente, isotipo 2×2in al costado del pecho</p>
+              <p className={styles.caption}>Remera negra — frente, isotipo a color 2×2in, lado derecho del pecho</p>
             </div>
             <div className={styles.shirtMockup}>
               <Image
                 src="/brand-guidelines/mockup-black-shirt-back.jpg"
-                alt="Remera negra, espalda — isotipo de 2Teams.AI en blanco con el nombre, grande y centrado en el medio de la espalda"
+                alt="Remera negra, espalda — isotipo de 2Teams.AI a color con el nombre, grande y centrado en el medio de la espalda"
                 width={584}
                 height={700}
                 className={styles.shirtPhoto}
               />
-              <p className={styles.caption}>Remera negra — espalda, isotipo grande centrado en el medio</p>
+              <p className={styles.caption}>Remera negra — espalda, isotipo a color, grande, centrado en el medio</p>
             </div>
           </div>
 
@@ -445,22 +446,22 @@ export default function BrandGuidelinesPage() {
             <div className={styles.shirtMockup}>
               <Image
                 src="/brand-guidelines/mockup-white-polo.jpg"
-                alt="Polo blanco con el ícono y wordmark de 2Teams.AI a color"
+                alt="Polo blanco con el isotipo de 2Teams.AI a color, chico, sobre el lado derecho del pecho"
                 width={669}
                 height={705}
                 className={styles.shirtPhoto}
               />
-              <p className={styles.caption}>Polo blanco — isotipo a color, centrado</p>
+              <p className={styles.caption}>Polo blanco — isotipo a color, 2×2in, lado derecho del pecho</p>
             </div>
             <div className={styles.shirtMockup}>
               <Image
                 src="/brand-guidelines/mockup-black-polo.jpg"
-                alt="Polo negro con el ícono y wordmark de 2Teams.AI en blanco"
+                alt="Polo negro con el isotipo de 2Teams.AI a color, chico, sobre el lado derecho del pecho"
                 width={669}
                 height={705}
                 className={styles.shirtPhoto}
               />
-              <p className={styles.caption}>Polo negro — isotipo en blanco, centrado</p>
+              <p className={styles.caption}>Polo negro — isotipo a color, 2×2in, lado derecho del pecho</p>
             </div>
           </div>
         </div>
