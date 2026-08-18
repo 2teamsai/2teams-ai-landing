@@ -5,7 +5,7 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const LEAD_INBOX = "helloworld@2teams-ai.com";
 
 export async function POST(request: Request) {
-  let body: { nombre?: string; email?: string; mensaje?: string; memberName?: string };
+  let body: { nombre?: string; email?: string; empresa?: string; mensaje?: string; memberName?: string };
   try {
     body = await request.json();
   } catch {
@@ -14,8 +14,9 @@ export async function POST(request: Request) {
 
   const nombre = body.nombre?.trim();
   const email = body.email?.trim();
+  const empresa = body.empresa?.trim();
   const mensaje = body.mensaje?.trim();
-  const memberName = body.memberName?.trim() || "2Teams.AI";
+  const memberName = body.memberName?.trim();
 
   if (!nombre || !email || !EMAIL_RE.test(email)) {
     return NextResponse.json({ error: "Nombre y email válidos son obligatorios" }, { status: 400 });
@@ -29,14 +30,18 @@ export async function POST(request: Request) {
 
   const resend = new Resend(apiKey);
   const fromAddress = process.env.RESEND_FROM_EMAIL || "2Teams.AI <onboarding@resend.dev>";
+  const subject = memberName ? `Nuevo lead desde tarjeta de ${memberName}` : `Nuevo contacto desde la landing: ${nombre}`;
+  const lines = [`Nombre: ${nombre}`, `Email: ${email}`];
+  if (empresa) lines.push(`Empresa: ${empresa}`);
+  lines.push(`Mensaje: ${mensaje || "(sin mensaje)"}`);
 
   try {
     const { error } = await resend.emails.send({
       from: fromAddress,
       to: LEAD_INBOX,
       replyTo: email,
-      subject: `Nuevo lead desde tarjeta de ${memberName}`,
-      text: `Nombre: ${nombre}\nEmail: ${email}\nMensaje: ${mensaje || "(sin mensaje)"}`,
+      subject,
+      text: lines.join("\n"),
     });
 
     if (error) {

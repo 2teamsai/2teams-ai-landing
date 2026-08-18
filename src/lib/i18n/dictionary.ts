@@ -81,6 +81,14 @@ export interface Copy {
     p: string;
     email: string;
     cta: string;
+    formNamePlaceholder: string;
+    formEmailPlaceholder: string;
+    formCompanyPlaceholder: string;
+    formMessagePlaceholder: string;
+    formSubmit: string;
+    formSending: string;
+    formSuccess: string;
+    formError: string;
   };
   footer: {
     locations: string;
@@ -284,6 +292,14 @@ export const dictionary: Record<Lang, Copy> = {
       p: "Una llamada de 20 minutos para ver si encajamos.",
       email: "helloworld@2teams-ai.com",
       cta: "Hablemos",
+      formNamePlaceholder: "Tu nombre",
+      formEmailPlaceholder: "Tu email",
+      formCompanyPlaceholder: "Empresa (opcional)",
+      formMessagePlaceholder: "Contanos qué querés construir",
+      formSubmit: "Enviar",
+      formSending: "Enviando...",
+      formSuccess: "¡Gracias! Te contactamos pronto.",
+      formError: "No se pudo enviar. Escribinos directo a helloworld@2teams-ai.com",
     },
     footer: {
       locations: "USA · Argentina · Colombia",
@@ -486,6 +502,14 @@ export const dictionary: Record<Lang, Copy> = {
       p: "A 20-minute call to see if we're a fit.",
       email: "helloworld@2teams-ai.com",
       cta: "Let's talk",
+      formNamePlaceholder: "Your name",
+      formEmailPlaceholder: "Your email",
+      formCompanyPlaceholder: "Company (optional)",
+      formMessagePlaceholder: "Tell us what you want to build",
+      formSubmit: "Send",
+      formSending: "Sending...",
+      formSuccess: "Thanks! We'll be in touch soon.",
+      formError: "Couldn't send it. Email us directly at helloworld@2teams-ai.com",
     },
     footer: {
       locations: "USA · Argentina · Colombia",
