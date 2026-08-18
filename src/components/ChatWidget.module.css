@@ -62,7 +62,6 @@
   font-family: var(--font-display), sans-serif;
   font-size: 18px;
   font-weight: 700;
-  color: var(--orange-2);
   white-space: nowrap;
   text-shadow:
     0 0 8px var(--bg),
@@ -71,6 +70,7 @@
     -1.5px 1.5px 0 var(--bg),
     1.5px 1.5px 0 var(--bg),
     0 3px 10px rgba(0, 0, 0, 0.6);
+  transition: color 0.3s ease;
 }
 
 @keyframes hintPulse {

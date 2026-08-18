@@ -7,6 +7,8 @@ import styles from "./ChatWidget.module.css";
 
 type Message = { role: "user" | "model"; text: string };
 
+const HINT_COLORS = ["var(--orange)", "var(--blue)", "var(--violet)"];
+
 function CloseIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -30,11 +32,16 @@ export default function ChatWidget() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [hintColorIndex, setHintColorIndex] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   function handleOpen() {
     setOpen(true);
     setMessages((prev) => (prev.length === 0 ? [{ role: "model", text: t.chat.greeting }] : prev));
+  }
+
+  function handleHintCycle() {
+    setHintColorIndex((i) => (i + 1) % HINT_COLORS.length);
   }
 
   useEffect(() => {
@@ -77,8 +84,17 @@ export default function ChatWidget() {
     <>
       {!open && (
         <div className={styles.widgetGroup}>
-          <button type="button" className={styles.hint} onClick={handleOpen} aria-hidden="true" tabIndex={-1}>
-            <span className={styles.hintText}>Hello World!</span>
+          <button
+            type="button"
+            className={styles.hint}
+            onClick={handleOpen}
+            onAnimationIteration={handleHintCycle}
+            aria-hidden="true"
+            tabIndex={-1}
+          >
+            <span className={styles.hintText} style={{ color: HINT_COLORS[hintColorIndex] }}>
+              Hello World!
+            </span>
           </button>
           <button
             type="button"
