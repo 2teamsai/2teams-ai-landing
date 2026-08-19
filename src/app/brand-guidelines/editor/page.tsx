@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
+import type { PointerEvent as ReactPointerEvent } from "react";
 import styles from "./Editor.module.css";
 
 type BgMode = "transparent" | "white" | "black" | "custom";
@@ -51,6 +52,10 @@ function fontStr(weight: number, px: number) {
   return `${weight} ${px}px ${FONT_FAMILY}`;
 }
 
+type Offset = { x: number; y: number };
+type ElementKey = "icon" | "wordmark" | "tagline";
+const ZERO_OFFSET: Offset = { x: 0, y: 0 };
+
 type DrawState = {
   fillMode: FillMode;
   solidColor: string;
@@ -66,6 +71,9 @@ type DrawState = {
   iconRatio: number;
   bg: BgMode;
   bgCustom: string;
+  // Manual drag offsets, as a fraction of canvas width/height so they scale
+  // cleanly between the live preview and any export resolution.
+  offsets: Record<ElementKey, Offset>;
 };
 
 function gradientLineForAngle(angleDeg: number) {
@@ -87,10 +95,12 @@ type Layout2D = {
   wmFontPx: number;
   wmX: number;
   wmBaselineY: number;
+  wmTotalW: number;
   segWidths: number[];
   tagFontPx: number;
   tagX: number;
   tagY: number;
+  tagW: number;
 };
 
 // Text is fit to a target WIDTH (not a fixed font size) so arbitrary user text
@@ -157,7 +167,49 @@ function computeLayout(measure: Measure, w: number, h: number, state: DrawState)
     tagY = iconY + iconDrawH + tagFontPx * 1.7;
   }
 
-  return { iconX, iconY, iconScale, iconDrawW, iconDrawH, wmFontPx, wmX, wmBaselineY, segWidths, tagFontPx, tagX, tagY };
+  iconX += state.offsets.icon.x * w;
+  iconY += state.offsets.icon.y * h;
+  wmX += state.offsets.wordmark.x * w;
+  wmBaselineY += state.offsets.wordmark.y * h;
+  tagX += state.offsets.tagline.x * w;
+  tagY += state.offsets.tagline.y * h;
+
+  return {
+    iconX,
+    iconY,
+    iconScale,
+    iconDrawW,
+    iconDrawH,
+    wmFontPx,
+    wmX,
+    wmBaselineY,
+    wmTotalW,
+    segWidths,
+    tagFontPx,
+    tagX,
+    tagY,
+    tagW,
+  };
+}
+
+function elementBounds(layout: Layout2D, key: ElementKey) {
+  if (key === "icon") {
+    return { x: layout.iconX, y: layout.iconY, w: layout.iconDrawW, h: layout.iconDrawH };
+  }
+  if (key === "wordmark") {
+    return {
+      x: layout.wmX,
+      y: layout.wmBaselineY - layout.wmFontPx * 0.82,
+      w: layout.wmTotalW,
+      h: layout.wmFontPx * 1.05,
+    };
+  }
+  return {
+    x: layout.tagX,
+    y: layout.tagY - layout.tagFontPx * 0.82,
+    w: layout.tagW,
+    h: layout.tagFontPx * 1.05,
+  };
 }
 
 function drawLogo(
@@ -165,7 +217,8 @@ function drawLogo(
   w: number,
   h: number,
   iconPath: Path2D,
-  state: DrawState
+  state: DrawState,
+  selected?: ElementKey | null
 ) {
   ctx.clearRect(0, 0, w, h);
 
@@ -184,8 +237,8 @@ function drawLogo(
     ctx.font = fontStr(weight, px);
     return ctx.measureText(text).width;
   };
-  const { iconX, iconY, iconScale, wmFontPx, wmX, wmBaselineY, segWidths, tagFontPx, tagX, tagY } =
-    computeLayout(measure, w, h, state);
+  const layout = computeLayout(measure, w, h, state);
+  const { iconX, iconY, iconScale, wmFontPx, wmX, wmBaselineY, segWidths, tagFontPx, tagX, tagY } = layout;
 
   ctx.save();
   ctx.translate(iconX - ICON_BBOX.x0 * iconScale, iconY - ICON_BBOX.y0 * iconScale);
@@ -233,6 +286,17 @@ function drawLogo(
     ctx.fillStyle = state.taglineColor;
     ctx.textBaseline = "alphabetic";
     ctx.fillText(state.taglineText || "", tagX, tagY);
+  }
+
+  if (selected) {
+    const b = elementBounds(layout, selected);
+    const pad = Math.max(4, layout.iconDrawW * 0.015);
+    ctx.save();
+    ctx.strokeStyle = "#4c6fff";
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([6, 4]);
+    ctx.strokeRect(b.x - pad, b.y - pad, b.w + pad * 2, b.h + pad * 2);
+    ctx.restore();
   }
 }
 
@@ -309,12 +373,23 @@ function escapeXml(s: string) {
 
 const SIZE_PRESETS = [2, 3, 4, 5, 6, 8, 10];
 const DPI_OPTIONS = [72, 150, 300];
+const PREVIEW_SIZE = 640;
 
 export default function LogoEditorPage() {
   const [iconD, setIconD] = useState<string | null>(null);
   const [fontsReady, setFontsReady] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const pathRef = useRef<Path2D | null>(null);
+
+  const [offsets, setOffsets] = useState<Record<ElementKey, Offset>>({
+    icon: { ...ZERO_OFFSET },
+    wordmark: { ...ZERO_OFFSET },
+    tagline: { ...ZERO_OFFSET },
+  });
+  const [selected, setSelected] = useState<ElementKey | null>(null);
+  const dragRef = useRef<{ key: ElementKey; startX: number; startY: number; startOffset: Offset } | null>(
+    null
+  );
 
   const [fillMode, setFillMode] = useState<FillMode>("brand");
   const [solidColor, setSolidColor] = useState("#0D0D12");
@@ -376,6 +451,7 @@ export default function LogoEditorPage() {
     iconRatio,
     bg,
     bgCustom,
+    offsets,
   };
 
   const redraw = useCallback(() => {
@@ -383,14 +459,14 @@ export default function LogoEditorPage() {
     if (!canvas || !pathRef.current) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
-    const size = 640;
+    const size = PREVIEW_SIZE;
     const dpr = typeof window !== "undefined" ? window.devicePixelRatio || 1 : 1;
     canvas.width = size * dpr;
     canvas.height = size * dpr;
     canvas.style.width = size + "px";
     canvas.style.height = size + "px";
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    drawLogo(ctx, size, size, pathRef.current, state);
+    drawLogo(ctx, size, size, pathRef.current, state, selected);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     fillMode,
@@ -407,6 +483,8 @@ export default function LogoEditorPage() {
     iconRatio,
     bg,
     bgCustom,
+    offsets,
+    selected,
     iconD,
     fontsReady,
   ]);
@@ -419,6 +497,11 @@ export default function LogoEditorPage() {
     setSegments((prev) => prev.map((s, idx) => (idx === i ? { ...s, ...patch } : s)));
   }
 
+  function resetPositions() {
+    setOffsets({ icon: { ...ZERO_OFFSET }, wordmark: { ...ZERO_OFFSET }, tagline: { ...ZERO_OFFSET } });
+    setSelected(null);
+  }
+
   function resetBrand() {
     setFillMode("brand");
     setWordmarkOn(true);
@@ -429,6 +512,62 @@ export default function LogoEditorPage() {
     setLayout("vertical");
     setIconRatio(0.8);
     setBg("transparent");
+    resetPositions();
+  }
+
+  function hitTest(px: number, py: number): ElementKey | null {
+    const canvas = canvasRef.current;
+    const ctx = canvas?.getContext("2d");
+    if (!ctx) return null;
+    const measure: Measure = (weight, size, text) => {
+      ctx.font = fontStr(weight, size);
+      return ctx.measureText(text).width;
+    };
+    const layout = computeLayout(measure, PREVIEW_SIZE, PREVIEW_SIZE, state);
+    const order: ElementKey[] = ["tagline", "wordmark", "icon"];
+    for (const key of order) {
+      if (key === "wordmark" && !state.wordmarkOn) continue;
+      if (key === "tagline" && !state.taglineOn) continue;
+      const b = elementBounds(layout, key);
+      if (px >= b.x && px <= b.x + b.w && py >= b.y && py <= b.y + b.h) return key;
+    }
+    return null;
+  }
+
+  function pointerPos(e: { clientX: number; clientY: number }) {
+    const canvas = canvasRef.current;
+    if (!canvas) return { x: 0, y: 0 };
+    const rect = canvas.getBoundingClientRect();
+    return {
+      x: ((e.clientX - rect.left) / rect.width) * PREVIEW_SIZE,
+      y: ((e.clientY - rect.top) / rect.height) * PREVIEW_SIZE,
+    };
+  }
+
+  function handlePointerDown(e: ReactPointerEvent<HTMLCanvasElement>) {
+    const { x, y } = pointerPos(e);
+    const key = hitTest(x, y);
+    setSelected(key);
+    if (key) {
+      dragRef.current = { key, startX: x, startY: y, startOffset: { ...offsets[key] } };
+      (e.target as HTMLCanvasElement).setPointerCapture(e.pointerId);
+    }
+  }
+
+  function handlePointerMove(e: ReactPointerEvent<HTMLCanvasElement>) {
+    const drag = dragRef.current;
+    if (!drag) return;
+    const { x, y } = pointerPos(e);
+    const dx = (x - drag.startX) / PREVIEW_SIZE;
+    const dy = (y - drag.startY) / PREVIEW_SIZE;
+    setOffsets((prev) => ({
+      ...prev,
+      [drag.key]: { x: drag.startOffset.x + dx, y: drag.startOffset.y + dy },
+    }));
+  }
+
+  function handlePointerUp() {
+    dragRef.current = null;
   }
 
   function getExportPx(): number {
@@ -597,14 +736,37 @@ export default function LogoEditorPage() {
           </section>
 
           <section className={styles.group}>
-            <h2>Composición</h2>
+            <div className={styles.groupHeaderRow}>
+              <h2>Composición</h2>
+              <button type="button" className={styles.linkBtn} onClick={resetPositions}>
+                Centrar posiciones
+              </button>
+            </div>
+            <p className={styles.hint}>
+              Hacé clic en el ícono, el wordmark o el párrafo en la vista previa y arrastralo para
+              moverlo libremente.
+            </p>
             <div className={styles.radioRow}>
               <label>
-                <input type="radio" checked={layout === "vertical"} onChange={() => setLayout("vertical")} />
+                <input
+                  type="radio"
+                  checked={layout === "vertical"}
+                  onChange={() => {
+                    setLayout("vertical");
+                    resetPositions();
+                  }}
+                />
                 Vertical
               </label>
               <label>
-                <input type="radio" checked={layout === "horizontal"} onChange={() => setLayout("horizontal")} />
+                <input
+                  type="radio"
+                  checked={layout === "horizontal"}
+                  onChange={() => {
+                    setLayout("horizontal");
+                    resetPositions();
+                  }}
+                />
                 Horizontal
               </label>
             </div>
@@ -696,8 +858,21 @@ export default function LogoEditorPage() {
 
         <div className={styles.previewWrap}>
           <div className={`${styles.previewBoard} ${bg === "transparent" ? styles.checker : ""}`}>
-            <canvas ref={canvasRef} className={styles.canvas} />
+            <canvas
+              ref={canvasRef}
+              className={`${styles.canvas} ${selected ? styles.canvasDragging : ""}`}
+              onPointerDown={handlePointerDown}
+              onPointerMove={handlePointerMove}
+              onPointerUp={handlePointerUp}
+              onPointerLeave={handlePointerUp}
+            />
           </div>
+          {selected && (
+            <p className={styles.selectionHint}>
+              Moviendo: {selected === "icon" ? "ícono" : selected === "wordmark" ? "wordmark" : "párrafo"} — hacé
+              clic afuera para soltar la selección.
+            </p>
+          )}
         </div>
       </div>
     </main>
