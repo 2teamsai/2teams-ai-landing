@@ -405,6 +405,12 @@
   color: var(--ink);
 }
 
+.editorLink {
+  color: #4c6fff;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
 /* ---------- Construction grid ---------- */
 
 .gridWrap {

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./BrandGuidelines.module.css";
 
 export const metadata: Metadata = {
@@ -231,6 +232,14 @@ export default function BrandGuidelinesPage() {
               <Image src="/brand-guidelines/logo-color.png" alt="Logo a color" width={90} height={90} />
               <p>Color — uso por defecto</p>
             </div>
+          </div>
+
+          <div className={styles.downloadNote}>
+            ¿Necesitás una variante puntual — otro texto, otro color, otro fondo? Usá el{" "}
+            <Link href="/brand-guidelines/editor" className={styles.editorLink}>
+              editor de logo interactivo
+            </Link>{" "}
+            y descargala en PNG o SVG al instante.
           </div>
         </div>
         <PageStamp section="Logo" number="03" />
